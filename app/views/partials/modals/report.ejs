@@ -1,0 +1,27 @@
+<div class="modal" id="reportModal" style="display:none;">
+    <div class="modalContent">
+        <div class="modalHeader">
+            <h2>Report an issue</h2>
+            <div class="closeModal">&#10006;</div>
+        </div>
+        <div class="modalBody">
+            <label for="reportId">Select category</label>
+            <select id="modalReport_ReportId" name="modalReport_ReportId">
+                <option value="0">Choose report category</option>
+                <% if(view.Reports != null) view.Reports.forEach(function(report) {%>
+                    <option value="<%=report.ReportId%>"><%=report.ReportName%></option>
+               <% }) %>
+            </select>
+            <br />
+            <textarea id="modalReport_Content" name="modalReport_Content"></textarea>
+        </div>
+        <div class="modalFooter">
+            <div class="buttonFrame">
+                <button id="reportSubmit">Submit report</button>
+            </div>
+            <div class="labelFrame">
+                <label id="reportModal_status"></label>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<% layout('/api-main') -%>
+<a href="/api/recipes" class="control-return"><button>Back to Recipe list</button></a>
+<a href="/api/recipe/new" class="control-new"><button>New recipe</button></a>
+<a href="/api/recipe/<%-view.RecipeComponents.Recipe.CraftingRecipeId-1%>" class="control-previous"><button>Previous Recipe</button></a>
+<a id="nextButton" href="/api/recipe/<%-view.RecipeComponents.Recipe.CraftingRecipeId+1%>" class="control-next"><button>Next Recipe</button></a>
+<hr />
+<hr />
+<form id="CraftingRecipeForm" data-recipe="<%-view.RecipeComponents.Recipe.CraftingRecipeId%>">
+    <label>Crafted Item</label>
+    <select id="CraftedItemId">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+        <option <%if(Item.ItemId == view.RecipeComponents.Recipe.ItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+    <input type="number" value="<%=view.RecipeComponents.Recipe.CraftTimeInMinutes%>" id="CraftTimeInMinutes" placeholder="Crafting time in minutes" />
+    <br />
+    <input type="number" value="<%=view.RecipeComponents.Recipe.ItemYield%>" id="ItemYield" placeholder="Item Yield" />
+    <br />
+    <label>Crafting Category</label>
+    <select id="CraftingCategoryId">
+        <% if(view.CraftingCategories != null){ view.CraftingCategories.forEach(function(CraftingCategory){ %>
+        <option <%if(CraftingCategory.CraftingCategoryId == view.RecipeComponents.Recipe.CraftingCategoryId) {%>selected<%}%> value="<%=CraftingCategory.CraftingCategoryId%>"><%=CraftingCategory.Name%></option>
+        <% }) } %>
+    </select> 
+    <br />
+    <label>Structure requirement</label>
+    <select id="RequiredStructureId">
+        <option value="0">Select structure</option>
+        <% if(view.Structures != null){ view.Structures.forEach(function(Structure){ %>
+            <option <%if(Structure.StructureId == view.RecipeComponents.Recipe.RequiredStructureId) {%>selected<%}%> value="<%=Structure.StructureId%>"><%=Structure.Name%></option>
+        <% }) } %>
+    </select>
+    <br />
+    <input type="number" value="<%=view.RecipeComponents.Recipe.RequiredStructureLevel%>" id="RequiredStructureLevel" placeholder="Level of the required structure" />
+    <br />
+    <label>Tool requirement (1)</label>
+    <select id="RequiredToolOneId">
+        <option value="0">Select tool</option>
+        <% if(view.Tools != null){ view.Tools.forEach(function(Item){ %>
+            <option <%if(Item.ItemId == view.RecipeComponents.Recipe.ToolOneItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select>
+    <br />
+    <label>Tool requirement (2)</label>
+    <select id="RequiredToolTwoId">
+        <option value="0">Select tool</option>
+        <% if(view.Tools != null){ view.Tools.forEach(function(Item){ %>
+            <option <%if(Item.ItemId == view.RecipeComponents.Recipe.ToolTwoItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select>
+    <hr />
+    <div id="ingredients">
+        <% if(view.RecipeComponents.Ingredients != null) { view.RecipeComponents.Ingredients.forEach(function(Ingredient){%>
+            <div class="ingredient">
+                <select class="IngredientItem">
+                    <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+                    <option <%if(Item.ItemId == Ingredient.IngredientItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+                    <% }) } %>
+                </select>
+                <input class="IngredientAmount" value="<%=Ingredient.IngredientAmount%>"  type="number" placeholder="Item amount">
+                <button class="removeIngredient">Remove this ingredient</button>
+            </div>
+        <%}) } %>
+    </div>
+    <button id="addIngredient" class="control-add-ingredient">Add ingredient</button>
+    <hr />
+    <hr />
+    <button id="saveRecipe" class="control-save">Save recipe</button>
+    <label id="status"></label>
+</form>
+<hr />
+
+<hr />
+<% if(view.RecipeComponents.Recipe.RequiredStructureId == null || view.RecipeComponents.Recipe.RequiredStructureId == undefined) { %>
+
+    <%-include("partials/basicCraftingRecipeView", {recipe: view.RecipeComponents.Recipe }) %>
+
+<%} else { %>
+
+    <%-include("partials/structureCraftingRecipeView", {recipe: view.RecipeComponents.Recipe }) %>
+
+<% } %>

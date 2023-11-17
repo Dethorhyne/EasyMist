@@ -1,0 +1,21 @@
+<% 
+var weightItems = [156, 102];
+var liquidItems = [5, 128, 76];
+
+if (weightItems.indexOf(ingredient.ItemId)>-1)
+    ingredient.AmountHR = (ingredient.Amount/1000)+"KG";
+else if (liquidItems.indexOf(ingredient.ItemId)>-1)
+    ingredient.AmountHR = (ingredient.Amount/1000)+"L";
+else
+    ingredient.AmountHR = ingredient.Amount;
+%> 
+
+<% if(ingredient===false) { %>
+    <div class="ingredientBox">
+    </div>
+<% } else {%>
+    <div class="ingredientBox <% if(ingredient.IsWater) {%>waterIngredient<% } %>" title="<%=ingredient.Name%>" style="background-image:url('/Images/Items/<%=ingredient.Image%>.png');">
+        <a class="ingredientLink" href="/item/<%=ingredient.ItemId%>"></a>
+        <p class="ingredientAmount"><%=ingredient.AmountHR%></p>
+    </div>
+<% } %>

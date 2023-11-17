@@ -1,0 +1,36 @@
+<% layout('/api-main') -%>
+
+<a href="/api/itemrepairs" class="control-return"><button>Back to Item repair list</button></a>
+<h1>Add new item repair</h1>
+<div class="hidden">
+    <select id="Ingredients">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+</div>
+<form id="ItemRepairForm">
+    <label>Repair Type</label>
+    <select id="ItemRepairTypeId">
+        <% if(view.ItemRepairTypes != null){ view.ItemRepairTypes.forEach(function(ItemRepairType){ %>
+            <option value="<%=ItemRepairType.ItemRepairTypeId%>"><%=ItemRepairType.LowRange%>% - <%=ItemRepairType.HighRange%>%</option>
+        <% }) } %>
+    </select> 
+    <br />
+    <label>Repaired Item</label>
+    <select id="RepairedItemId">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+    <br />
+    <input type="number" id="RepairTimeInMinutes" placeholder="Repair time in minutes" />
+    <hr />
+    <div id="ingredients">
+    </div>
+    <button id="addIngredient" class="control-add-ingredient">Add ingredient</button>
+    <hr />
+    <hr />
+    <button id="addItemRepair" class="control-save">Add item repair</button>
+    <label id="status"></label>
+</form>

@@ -1,0 +1,72 @@
+
+html,body {
+    margin:0px;
+    padding:0px;
+}
+
+body {
+    font-family: 'Segoe UI';
+    color:#FFF;
+    background-color:#898989;
+}
+
+main {
+    max-width:100% !important
+}
+
+button {
+    color: #FFF;
+    background-color: #6ea91a;
+    border: 0px;
+    padding: 5px 10px;
+    margin: 3px;
+}
+
+button:hover {
+    background-color: #83ca1e;
+}
+
+button:active {
+    background-color: #56801a;
+}
+
+input, textarea, select {
+    margin:3px;
+    min-width:200px;
+    background-color:#454545;
+    color:#FFF;
+    border:0px;
+}
+select {
+    padding:4px;
+}
+input, textarea {
+    padding:5px;
+}
+
+a {
+    text-decoration: none;
+    color:#ebd779;
+}
+
+
+.tableIcon {
+    max-height: 40px;
+}
+.tableStructureIcon {
+    max-height:80px;
+}
+
+.hidden {
+    display:none;
+}
+
+.bigButton {
+    font-size: 25px;
+    padding: 12px 25px;
+}
+
+input[type="number"] {
+    min-width: 100px;
+    width: 100px;
+}

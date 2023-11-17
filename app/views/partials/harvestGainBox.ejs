@@ -1,0 +1,11 @@
+<% if(!gain.Empty) { %>
+    <div class="harvestBox" title="<%=gain.Name%>" style="background-image:url('/Images/Items/<%=gain.Image%>.png');">
+        <a class="harvestLink" href="/item/<%=gain.ItemId%>"></a>
+        <p class="harvestAmount"><%=gain.Range%></p>
+        <p class="singleHarvestTime" title="Harvest time per piece"><%=gain.HarvestTime%> min/pc</p>
+    </div>
+<%} else {%>
+    <div class="harvestBox">
+    </div>
+<%}%>
+

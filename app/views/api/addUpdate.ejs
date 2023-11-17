@@ -1,0 +1,15 @@
+<% layout('/api-main') -%>
+
+<a href="/api/updates" class="control-return"><button>Back to update list</button></a>
+<h1>Add new update</h1>
+<form id="ItemForm">
+    <input type="text" id="UpdateVersion" placeholder="Update version" />
+    <br />
+    <input type="date" id="UpdateDate" placeholder="Update date" />
+    <br />
+    <textarea id="Changelist" placeholder="Change list" style="min-width:700px; min-height:450px;"></textarea>
+    <hr />
+    <hr />
+    <button id="addUpdate" class="control-save">Add update</button>
+    <label id="status"></label>
+</form>

@@ -1,0 +1,49 @@
+<% layout('/api-main') -%>
+<a href="/api/upgraderecipes" class="control-return"><button>Back to Recipe list</button></a>
+<a href="/api/upgraderecipe/new" class="control-new"><button>New recipe</button></a>
+<a href="/api/upgraderecipe/<%-view.UpgradeRecipeComponents.UpgradeRecipe.UpgradeRecipeId-1%>" class="control-previous"><button>Previous Upgrade Recipe</button></a>
+<a id="nextButton" href="/api/upgraderecipe/<%-view.UpgradeRecipeComponents.UpgradeRecipe.UpgradeRecipeId+1%>" class="control-next"><button>Next Upgrade Recipe</button></a>
+<hr />
+<hr />
+<div class="hidden">
+    <select id="Ingredients">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+</div>
+<form id="UpgradeRecipeForm" data-upgraderecipe="<%-view.UpgradeRecipeComponents.UpgradeRecipe.UpgradeRecipeId%>">
+    <input type="text" id="Name" value="<%=view.UpgradeRecipeComponents.UpgradeRecipe.Name%>" placeholder="Upgraded structure name" />
+    <br />
+    <label>Upgraded Structure</label>
+    <select id="StructureId">
+        <% if(view.Structures != null){ view.Structures.forEach(function(Structure){ %>
+        <option <%if(Structure.StructureId == view.UpgradeRecipeComponents.UpgradeRecipe.StructureId) {%>selected<%}%> value="<%=Structure.StructureId%>"><%=Structure.Name%></option>
+        <% }) } %>
+    </select> 
+    <input type="number" value="<%=view.UpgradeRecipeComponents.UpgradeRecipe.BuildTimeInMinutes%>" id="BuildTimeInMinutes" placeholder="Upgrade time in minutes" />
+    <br />
+    <hr />
+    <div id="ingredients">
+        <% if(view.UpgradeRecipeComponents.Ingredients != null) { view.UpgradeRecipeComponents.Ingredients.forEach(function(Ingredient){%>
+            <div class="ingredient">
+                <select class="IngredientItem">
+                    <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+                    <option <%if(Item.ItemId == Ingredient.IngredientItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+                    <% }) } %>
+                </select>
+                <input class="IngredientAmount" value="<%=Ingredient.IngredientAmount%>"  type="number" placeholder="Item amount">
+                <button class="removeIngredient">Remove this ingredient</button>
+            </div>
+        <%}) } %>
+    </div>
+    <button id="addIngredient" class="control-add-ingredient">Add ingredient</button>
+    <hr />
+    <hr />
+    <button id="saveUpgradeRecipe" class="control-save">Save upgrade recipe</button>
+    <label id="status"></label>
+</form>
+<hr />
+
+<hr />
+<%-include("partials/upgradeRecipeView", {upgradeRecipe: view.UpgradeRecipeComponents.UpgradeRecipe }) %>

@@ -1,0 +1,30 @@
+<% layout('/api-main') -%>
+
+<a href="/api/upgraderecipes" class="control-return"><button>Back to Upgrade Recipe list</button></a>
+<h1>Add new upgrade recipe</h1>
+<div class="hidden">
+    <select id="Ingredients">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+</div>
+<form id="UpgradeRecipeForm">
+    <input type="text" id="Name" placeholder="Upgraded structure name" />
+    <br />
+    <label>Upgraded Structure</label>
+    <select id="StructureId">
+        <% if(view.Structures != null){ view.Structures.forEach(function(Structure){ %>
+            <option value="<%=Structure.StructureId%>"><%=Structure.Name%></option>
+        <% }) } %>
+    </select> 
+    <input type="number" id="BuildTimeInMinutes" placeholder="Building time in minutes" />
+    <hr />
+    <div id="ingredients">
+    </div>
+    <button id="addIngredient" class="control-add-ingredient">Add ingredient</button>
+    <hr />
+    <hr />
+    <button id="addUpgradeRecipe" class="control-save">Add upgrade recipe</button>
+    <label id="status"></label>
+</form>

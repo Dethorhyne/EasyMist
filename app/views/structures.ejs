@@ -1,0 +1,14 @@
+<% layout('/main') -%>
+
+<h2 class="sectionTitle">Structures</h2>
+<section class="itemPreviewBox">
+    <% if (view.Structures != null) { view.Structures.forEach(function(Structure){%>
+        <article class="itemFrame">
+            <p class="itemName"><a href="/structure/<%=Structure.StructureId%>"><%=Structure.Name%></a></p>
+            <div class="imageFrame">
+                <a href="/structure/<%=Structure.StructureId%>"><img class="itemImage" src="/Images/Structures/<%=Structure.Name.toLowerCase().replace(/ /g, "_")%>.png" /></a>
+            </div>
+            <p class="itemDescription"><%=Structure.Description%></p>
+        </article>
+    <% })} %>
+</section>

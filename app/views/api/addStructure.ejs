@@ -1,0 +1,31 @@
+<% layout('/api-main') -%>
+
+<a href="/api/structures" class="control-return"><button>Back to Structure list</button></a>
+<h1>Add new structure</h1>
+<form id="StructureForm">
+    <input type="text" id="Name" placeholder="Structure name" />
+    <br />
+    <label>Building Category</label>
+    <select id="BuildingCategoryId">
+        <option value="0">Select category</option>
+        <% if(view.BuildingCategories != null){ view.BuildingCategories.forEach(function(BuildingCategory){ %>
+            <option value="<%=BuildingCategory.BuildingCategoryId%>"><%=BuildingCategory.Name%></option>
+        <% }) } %>
+    </select>
+    <br />
+    <textarea id="Description" placeholder="Description" style="min-width:400px; min-height:150px;"></textarea>
+    <br />
+    <input type="number" id="StorageAmount" placeholder="Storage amount" />
+    <br />
+    <label><input type="checkbox" id="IsElectricityRequired" />Is electricity required?</label>
+    <br />
+    <label><input type="checkbox" id="IsCraftStation" />Is this a crafting station?</label>
+    <br />
+    <input type="number" id="EnergyConsumption" placeholder="Energy consumption" />
+    <br />
+    <input type="text" id="StructureUI" placeholder="Structure UI partial" />
+    <hr />
+    <hr />
+    <button id="addStructure" class="control-save">Add structure</button>
+    <label id="status"></label>
+</form>

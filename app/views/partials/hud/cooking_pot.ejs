@@ -1,0 +1,66 @@
+<div class="scaleWrap cookingPotSection">
+    <div class="hudElementsFrame">
+        <div class="hudBox genericCookingHud">
+            <h3>COOKING TASK</h3>
+        </div>
+        <div class="hudBox cookingWaterTransfer">
+            <div class="waterContainer" style="background-image:url('/Images/Items/water.png');">
+            </div>
+            <div class="transferAmount">
+                <p>0.0L</p>
+                <div class="arrowBox">
+                    <div class="arrowUp"></div>
+                    <div class="arrowDown"></div>
+                </div>
+            </div>
+            <div class="structureWaterContainer" style="background-image:url('/Images/Items/bucket.png');">
+            </div>
+            <div class="giveWaterBtn">
+                GIVE
+            </div>
+            <div class="MaxWaterNotice">4 Liter max</div>
+        </div>
+        
+        <div class="hudBox generic4Container">
+            <span>Storage</span>
+            <div class="containerFlex">
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+            </div>
+        </div>
+        <div class="hudButtonBox">
+            <div class="hudButton actionableButton CookBtn hudButtonActive" data-target=".cookingPotSection">Cook</div>
+            <div class="hudButton actionableButton RenderFatBtn" data-target=".fatRenderSection">Render fat</div>
+        </div>
+    </div>
+</div>
+<div class="scaleWrap fatRenderSection" style="display:none;">
+    <div class="hudElementsFrame">
+        <div class="hudBox fatRenderHud">
+            <h2>FAT RENDER</h2>
+            <div class="containerFlex">
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+            </div>
+            <div class="lowgradeIcon" style="background-image:url('/Images/Items/low-grade_fuel.png')"></div>
+            <div class="fuelLimit">Up to 1.5 Liter</div>
+        </div>
+        <div class="hudBox generic4Container">
+            <span>Storage</span>
+            <div class="containerFlex">
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+                <div class="emptyContainer"></div>
+            </div>
+        </div>
+        <div class="hudButtonBox">
+            <div class="hudButton actionableButton CookBtn " data-target=".cookingPotSection">Cook</div>
+            <div class="hudButton actionableButton RenderFatBtn hudButtonActive" data-target=".fatRenderSection">Render fat</div>
+        </div>
+    </div>
+</div>

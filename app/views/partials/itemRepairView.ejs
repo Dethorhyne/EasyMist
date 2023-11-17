@@ -1,0 +1,31 @@
+<% 
+    itemRepair.Ingredients = JSON.parse(itemRepair.Ingredients_JSON);
+
+    itemRepair.repairedItemImage = itemRepair.Name.toLowerCase().replace(/ /g,"_");
+    
+%> 
+<div class="scaleWrap">
+    <div class="itemRepairFrame">
+        <div class="repairedItemBox" title="<%=itemRepair.Name%>" style="background-image:url('/Images/Items/<%=itemRepair.repairedItemImage%>.png');">
+            <div class="durabilityRange durabilityType-<%=itemRepair.ItemRepairTypeId%>"><%=itemRepair.LowRange%>% - <%=itemRepair.HighRange%>%</div>
+        </div>
+        <p class="repairTime" title="In-game time">Repair time : <span><%=itemRepair.RepairTimeHR%></span></p>
+        <div class="ingredientsContainer">
+            <% for(i = 0; i < 5; i++) { %>
+                <% if(itemRepair.Ingredients[i]) { %>
+                    <%-include("partials/ingredientBox", 
+                    {ingredient: {
+                        Name: itemRepair.Ingredients[i].Name, 
+                        ItemId: itemRepair.Ingredients[i].ItemId, 
+                        Amount : itemRepair.Ingredients[i].IngredientAmount, 
+                        Image : itemRepair.Ingredients[i].Name.toLowerCase().replace(/ /g, "_")
+                        }
+                    });%>
+                <% } else { %>
+                    <%-include("partials/ingredientBox", {ingredient: false});%>
+                <% } %>
+            <% } %>
+            
+        </div>
+    </div>
+</div>

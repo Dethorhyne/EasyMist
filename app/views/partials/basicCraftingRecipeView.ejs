@@ -1,0 +1,64 @@
+<% 
+    recipe.Ingredients = JSON.parse(recipe.Ingredients_JSON);
+
+    recipe.craftedItemImage = recipe.CraftedItemName.toLowerCase().replace(/ /g, "_");
+    if(recipe.ToolOneItemId)
+        recipe.ToolOneImage = recipe.ToolOneName.toLowerCase().replace(/ /g, "_");
+    if(recipe.ToolTwoItemId)
+        recipe.ToolTwoImage = recipe.ToolTwoName.toLowerCase().replace(/ /g, "_");
+
+
+    var weightItems = [156, 102];
+    var liquidItems = [5, 128, 76];
+
+    if (weightItems.indexOf(recipe.ItemId)>-1)
+        recipe.ItemYieldHR = (recipe.ItemYield/1000)+"KG";
+    else if (liquidItems.indexOf(recipe.ItemId)>-1)
+        recipe.ItemYieldHR = (recipe.ItemYield/1000)+"L";
+    else
+        recipe.ItemYieldHR = recipe.ItemYield;
+    
+%> 
+<div class="scaleWrap">
+    <div class="basicCraftingRecipe craftingRecipeFrame">
+        <div class="iconImage" title="<%=recipe.CraftedItemName%>" style="background-image:url('/Images/Items/<%=recipe.craftedItemImage%>.png');"></div>
+        <p class="recipeName"><a title="View item" href="/item/<%=recipe.ItemId%>"><%=recipe.CraftedItemName%></a></p>
+        <p class="craftTime" title="In-game time">Craft time : <span><%=recipe.CraftTimeHR%></span></p>
+        <p class="itemYield" title="Yield"><% if(recipe.ItemYield>1) { %>(<% if(weightItems.indexOf(recipe.ItemId) == liquidItems.indexOf(recipe.ItemId)) { %>x<% } %><%=recipe.ItemYieldHR%>)<% } %></p>
+        <p class="description"><%=recipe.Description%></p>
+        <div class="ingredientsContainer">
+            <% for(i = 0; i < 3; i++) { %>
+                <% if(recipe.Ingredients[i]) { %>
+                    <%-include("partials/ingredientBox", 
+                    {ingredient: {
+                        Name: recipe.Ingredients[i].Name, 
+                        ItemId: recipe.Ingredients[i].ItemId, 
+                        Amount : recipe.Ingredients[i].IngredientAmount, 
+                        Image : recipe.Ingredients[i].Name.toLowerCase().replace(/ /g, "_"), 
+                        IsWater: false
+                        }
+                    });%>
+                <% } else { %>
+                    <%-include("partials/ingredientBox", {ingredient: false});%>
+                <% } %>
+            <% } %>
+            
+        </div>
+        <div class="toolsContainer">
+            <% if(recipe.ToolOneItemId) { %>
+                <div class="toolBox" title="<%=recipe.ToolOneName%>" style="background-image:url('/Images/Items/<%=recipe.ToolOneImage%>.png');">
+                    <a class="toolLink" href="/item/<%=recipe.ToolOneItemId%>"></a>
+                </div>
+            <% } else { %>
+                <div class="toolBox"></div>
+            <% } %>
+            <% if(recipe.ToolTwoItemId) { %>
+                <div class="toolBox" title="<%=recipe.ToolTwoName%>" style="background-image:url('/Images/Items/<%=recipe.ToolTwoImage%>.png');">
+                    <a class="toolLink" href="/item/<%=recipe.ToolTwoItemId%>"></a>
+                </div>
+            <% } else { %>
+                <div class="toolBox"></div>
+            <% } %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<% layout('/api-main') -%>
+
+<a href="/api/harvests" class="control-return"><button>Back to harvest list</button></a>
+<h1>Add new harvest</h1>
+<form id="HarvestForm">
+    <label>Harvested Item</label>
+    <select id="HarvestedItemId">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+    <br />
+    <label>Tool requirement</label>
+    <select id="ToolItemId">
+        <option value="0">Select tool</option>
+        <% if(view.Tools != null){ view.Tools.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select>
+    <hr />
+    <div id="gainedItems">
+    </div>
+    <button id="addGainedItem" class="control-add-ingredient">Add gained item</button>
+    <hr />
+    <hr />
+    <button id="addHarvest" class="control-save">Add harvest</button>
+    <label id="status"></label>
+</form>

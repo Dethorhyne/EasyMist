@@ -1,0 +1,32 @@
+<% layout('/api-main') -%>
+
+<a href="/api" class="control-return"><button>Return to menu</button></a>
+<h1>Recipe list</h1>
+<a href="/api/recipe/new" class="control-new"><button>Add new recipe</button></a>
+<input id="filter" type="text" placeholder="Filter table"/>
+<table border="1">
+    <thead>
+        <tr>
+            <td>Crafted Item Name</td>
+            <td>Crafting recipe</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (view.Recipes != null) { view.Recipes.forEach(function(recipe){%>
+            <tr>
+                <td><a href="/api/recipe/<%=recipe.CraftingRecipeId%>"><%=recipe.CraftedItemName%></a></td>
+                <td>
+                    <% if(recipe.RequiredStructureId == null || recipe.RequiredStructureId == undefined) { %>
+
+                        <%-include("partials/basicCraftingRecipeView", {recipe: recipe }) %>
+                    
+                    <%} else { %>
+                    
+                        <%-include("partials/structureCraftingRecipeView", {recipe: recipe }) %>
+                    
+                    <% } %>
+                </td>
+            </tr>
+        <%})}%>
+    </tbody>
+</table>

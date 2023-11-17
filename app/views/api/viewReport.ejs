@@ -1,0 +1,21 @@
+<% layout('/api-main') -%>
+<% 
+
+%> 
+<a href="/api/reports" class="control-return"><button>Back to Report list</button></a>
+<a href="/api/report/<%-view.UserReport.UserReportId-1%>" class="control-new" class="control-previous"><button>Previous Report</button></a>
+<a id="nextButton" href="/api/report/<%-view.UserReport.UserReportId+1%>" class="control-next"><button>Next Report</button></a>
+<hr />
+<hr />
+<form id="ReportForm" data-report="<%-view.UserReport.UserReportId%>">
+    <input type="text" value="<%=view.UserReport.ReportCategoryName%> > <%=view.UserReport.ReportSubCategoryName%>" readonly placeholder="Report category" />
+    <input type="text" value="<%=view.UserReport.RefererUrl%>" readonly placeholder="Referer URL" />
+    <input type="text" value="<%=view.UserReport.ClientIPAddress%>" readonly placeholder="IP Address" />
+    <br />
+    <textarea id="Content" style="min-width:700px; min-height:450px;"><%=view.UserReport.Content%></textarea>
+    <hr />
+    <button id="saveReport" class="control-save">Save report</button>
+    <button id="deleteReport" class="control-delete">Delete report</button>
+    <label id="status"></label>
+</form>
+<hr />

@@ -1,0 +1,946 @@
+.hudElementsFrame {
+    width: 430px;
+}
+
+.hudBox {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hudBox.genericHud {
+    height: 340px;
+}
+
+.hudBox.genericCookingHud {
+    height: 167px;
+    margin-bottom: 20px;
+}
+
+.hudBox h3 {
+    color: #f7f7f7;
+    text-align: center;
+    padding: 9px 0px;
+    font-size: 21px;
+    margin: 0;
+}
+
+.hudBox.generic4Container {
+    height: 150px;
+    margin-bottom: 21px;
+}
+
+.containerFlex {
+    position: absolute;
+    display: flex;
+}
+
+.generic4Container .containerFlex {
+    left: 36px;
+    top: 34px;
+}
+
+.charcoalContainer .containerFlex {
+    left: 36px;
+    top: 32px;
+}
+
+.containerFlex .emptyContainer {
+    border: 1px solid #FFF;
+    width: 90px;
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.containerFlex:not(.fullWidthWrap):not(.verticalFlex) .emptyContainer:not(:first-child) {
+    border-left: 0px !important;
+}
+
+.hudNameBox h2 {
+    color: #ffa400;
+    font-size: 27px;
+    line-height: 27px;
+    padding: 5px 0px;
+    width: 260px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.hudNameBox {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.hudBox.charcoalContainer {
+    height: 145px;
+}
+
+.hudBox.campfireHud {
+    height: 290px;
+    margin-bottom: 40px;
+}
+
+.charcoalContainer .containerDescription {
+    font-size: 12px;
+    text-transform: uppercase;
+    left: 14px;
+    top: 12px;
+    color: #FFF;
+    position: absolute;
+}
+
+.ingredientContainer {
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid #CCC;
+    margin-left: 7px;
+    position: relative;
+}
+
+.campfireHud .containerFlex {
+    left: 63px;
+    top: 21px;
+}
+
+.campfireHud .successNotice {
+    color: #CCC;
+    bottom: 17px;
+    position: absolute;
+    left: 25px;
+    font-size: 17px;
+}
+
+.ingredientContainer .containerDescription {
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 2px;
+}
+
+.ingredientContainer .containerDescription span {
+    display: block;
+    font-size: 12px;
+    text-transform: initial;
+    color: #FFF;
+}
+
+.campfireHud .fuelContainer {
+    width: 90px;
+    height: 90px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid #CCC;
+    margin-left: 7px;
+    left: 160px;
+    top: 125px;
+    position: relative;
+    box-shadow: 0px 0px 40px -9px inset #985c12;
+}
+
+.fuelContainer .containerDescription {
+    font-size: 13px;
+    line-height: 13px;
+    text-transform: uppercase;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 2px;
+}
+
+.campfireHud .igniteButton {
+    position: absolute;
+    right: 19px;
+    top: 247px;
+    border: 2px solid #AAA;
+    padding: 2px 28px;
+    color: #ffa400;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.hudBox.cookingWaterTransfer {
+    height: 145px;
+    margin-bottom: 19px;
+}
+
+.cookingWaterTransfer .waterContainer {
+    border: 1px solid #FFF;
+    width: 90px;
+    height: 89px;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.cookingWaterTransfer .transferAmount {
+    color: #92b8cc;
+    font-weight: bold;
+    font-size: 27px;
+    position: absolute;
+    background-color: #6c6b6a;
+    padding: 3px 62px 3px 30px;
+    top: 21px;
+    left: 128px;
+}
+
+.cookingWaterTransfer .giveWaterBtn {
+    background-color: #24343b;
+    color: #FFF;
+    position: absolute;
+    left: 128px;
+    top: 71px;
+    border: 2px solid #CCC;
+    padding: 4px 48px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cookingWaterTransfer .MaxWaterNotice {
+    right: 30px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.cookingWaterTransfer .arrowBox {
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    width: 35px;
+    top: 0;
+    background-color: #8d8d8d;
+}
+
+.arrowBox .arrowDown {
+    width: 0px;
+    height: 0px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #fFF;
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+}
+
+.arrowBox .arrowUp {
+    width: 0px;
+    height: 0px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid #fFF;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.hudButtonBox {
+    position: relative;
+    width: 100%;
+    height: 100px;
+}
+
+.hudButtonBox .hudButton {
+    background-color: rgba(36, 52, 59, 0.6);
+    color: #FFF;
+    position: absolute;
+    border: 2px solid #CCC;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.hudButtonBox .CookBtn {
+    left: 5px;
+    top: 0px;
+    padding: 5px 67px;
+}
+
+.hudButtonBox .RenderFatBtn {
+    right: 5px;
+    top: 0px;
+    padding: 5px 36px;
+}
+
+.hudButtonBox .hudButtonActive {
+    background-color: rgb(79, 148, 172);
+}
+
+.fatRenderHud h2 {
+    text-align: center;
+}
+
+.hudBox.fatRenderHud {
+    height: 324px;
+    margin-bottom: 27px;
+}
+
+.fatRenderHud .containerFlex {
+    left: 34px;
+    top: 39px;
+}
+
+.fatRenderHud .fuelLimit {
+    font-size: 20px;
+    left: 260px;
+    top: 201px;
+    position: absolute;
+}
+
+.fatRenderHud .lowgradeIcon {
+    width: 150px;
+    height: 150px;
+    background-position: center center;
+    background-size: contain;
+    position: absolute;
+    left: 140px;
+    top: 144px;
+}
+
+.generic4Container span {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #AAA;
+    left: 10px;
+    position: absolute;
+    top: 6px;
+}
+
+.containerFlex.fullWidthWrap {
+    flex-wrap: wrap;
+}
+
+.wrapBox {
+    flex-wrap:wrap;
+}
+
+.hudBox.fridgeContainer:not(.smallFridge) {
+    height: 360px;
+}
+.hudBox.fridgeContainer.smallFridge {
+    height: 200px;
+}
+
+.fridgeContainer .containerFlex {
+    position: absolute;
+    left: 15px;
+    top: 25px;
+}
+
+.containerFlex.fullWidthWrap .emptyContainer {
+    border: 1px solid #FFF;
+    margin-top: -1px;
+    margin-left: -1px;
+    width: 80px;
+    height: 80px;
+}
+
+.hudBox.hudInputBox {
+    padding: 20px;
+}
+
+.hudInputBox p {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.hudInputBox p span {
+    font-weight: normal;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 137px 5px 5px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.hudBox.generatorContainer {
+    height: 182px;
+}
+
+.generatorContainer .containerFlex {
+    left: 161px;
+    top: 40px;
+}
+
+.hudButtonBox .whiteHudButton {
+    border: 2px solid #FFF;
+    width: 326px;
+    margin-bottom: 0px;
+    margin-left: 73px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 4px 0px;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hudBox.purifyWaterMaterial {
+    height: 193px;
+    margin-bottom: 12px;
+}
+
+.cookingWaterTransfer .takeWaterBtn {
+    background-color: #344b33;
+    color: #FFF;
+    position: absolute;
+    left: 135px;
+    top: 55px;
+    border: 2px solid #CCC;
+    padding: 4px 48px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hudButtonBox .hudButtonDistill {
+    border: 2px solid #CCC;
+    text-transform: uppercase;
+    color: #ff9300;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 5px;
+    text-align: center;
+}
+
+.purifyWaterMaterial h2 {
+    color: #fffaaf;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    padding-top: 20px;
+}
+
+
+.containerFlex .recipeIngredientContainer {
+    width: 69px;
+    height: 69px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px dashed #CCC;
+    margin-left: 7px;
+    position: relative;
+}
+
+.purifyWaterMaterial .containerFlex {
+    left: 178px;
+    top: 93px;
+}
+
+.purifyWaterMaterial .materialNotice {
+    width: 100px;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    left: 40px;
+    top: 100px;
+    line-height: 21px;
+}
+
+.containerFlex .recipeIngredientContainer p {
+    position: absolute;
+    bottom: 0px;
+    right: 3px;
+    font-size: 18px;
+}
+
+
+.hudBox.cookingWaterTransfer {
+    height: 145px;
+    margin-bottom: 19px;
+}
+
+.cookingWaterTransfer .waterContainer {
+    border: 1px solid #FFF;
+    width: 90px;
+    height: 89px;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.cookingWaterTransfer .transferAmount {
+    color: #92b8cc;
+    font-weight: bold;
+    font-size: 27px;
+    position: absolute;
+    background-color: #6c6b6a;
+    padding: 3px 62px 3px 30px;
+    top: 21px;
+    left: 128px;
+}
+
+.cookingWaterTransfer .giveWaterBtn {
+    background-color: #24343b;
+    color: #FFF;
+    position: absolute;
+    left: 128px;
+    top: 71px;
+    border: 2px solid #CCC;
+    padding: 4px 48px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cookingWaterTransfer .MaxWaterNotice {
+    right: 30px;
+    position: absolute;
+    bottom: 10px;
+}
+
+.cookingWaterTransfer .arrowBox {
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    width: 35px;
+    top: 0;
+    background-color: #8d8d8d;
+}
+
+.cookingWaterTransfer .safeWaterNotice {
+    left: 0px;
+    position: absolute;
+    top: 6px;
+    text-align: center;
+    width: 100%;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #96c98b;
+}
+
+.cookingWaterTransfer .structureWaterContainer {
+    width: 140px;
+    height: 140px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: 3px;
+    position: absolute;
+    top: 5px;
+}
+
+
+.hudBox.waterBarrelTransfer {
+    height: 300px;
+    margin-bottom: 19px;
+}
+
+.waterBarrelTransfer .waterContainer {
+    border: 1px solid #FFF;
+    width: 90px;
+    height: 89px;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 25px;
+    top: 58px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.waterBarrelTransfer .transferAmount {
+    color: #92b8cc;
+    font-weight: bold;
+    font-size: 27px;
+    position: absolute;
+    background-color: #6c6b6a;
+    padding: 3px 62px 3px 30px;
+    top: 21px;
+    left: 128px;
+}
+
+.waterBarrelTransfer .giveWaterBtn {
+    background-color: #24343b;
+    color: #FFF;
+    position: absolute;
+    left: 135px;
+    top: 59px;
+    border: 2px solid #CCC;
+    padding: 4px 48px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.waterBarrelTransfer .takeWaterBtn {
+    background-color: #344b33;
+    color: #FFF;
+    position: absolute;
+    left: 135px;
+    top: 109px;
+    border: 2px solid #CCC;
+    padding: 4px 48px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.waterBarrelTransfer .MaxWaterNotice {
+    right: 27px;
+    position: absolute;
+    bottom: 47px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.waterBarrelTransfer .arrowBox {
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    width: 35px;
+    top: 0;
+    background-color: #8d8d8d;
+}
+
+.waterBarrelTransfer .safeWaterNotice {
+    left: 0px;
+    position: absolute;
+    top: 6px;
+    text-align: center;
+    width: 100%;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #96c98b;
+}
+
+.waterBarrelTransfer .structureWaterContainer:not(.waterFeeder) {
+    width: 235px;
+    height: 185px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: -46px;
+    position: absolute;
+    top: 17px;
+}
+.waterBarrelTransfer .structureWaterContainer.waterFeeder {
+    width: 235px;
+    height: 185px;
+    background-position: -114px center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: -100px;
+    position: absolute;
+    top: 17px;
+}
+
+.waterBarrelTransfer .waterCapacity {
+    font-size: 13px;
+    color: #CCC;
+    position: absolute;
+    top: 196px;
+    left: 25px;
+}
+
+.waterBarrelTransfer .capacityBar {
+    top: 214px;
+    position: absolute;
+    left: 25px;
+    background-color: #52a8d2;
+    width: 380px;
+    height: 16px;
+}
+
+.waterBarrelTransfer .waterStatus {
+    bottom: 12px;
+    position: absolute;
+    left: 25px;
+}
+
+
+.hudBox.moonshineStill {
+    height: 193px;
+    margin-bottom: 12px;
+}
+
+.moonshineStill h2 {
+    color: #fffaaf;
+    text-align: left;
+    position: relative;
+    left: 20px;
+    top: 15px;
+    font-size: 18px;
+}
+
+.moonshineStill .containerFlex {
+    left: 137px;
+    top: 103px;
+}
+
+.moonshineStill .materialNotice {
+    width: 255px;
+    font-size: 16px;
+    position: absolute;
+    left: 146px;
+    top: 40px;
+    color: #CCC;
+    line-height: 21px;
+}
+
+.moonshineStill h2 span {
+    color: #FFF;
+    font-weight: normal;
+}
+
+.moonshineStill .alcoholIcon {
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 45px;
+    left: 16px;
+}
+
+.recipeIngredientContainer.waterContainer {
+    box-shadow: 0px 0px 20px inset #2194a5;
+}
+
+
+
+.hudBox.repairBenchFrame {
+    height: 330px;
+    margin-bottom: 5px;
+}
+
+.repairBenchFrame h2 {
+    color: #fffaaf;
+    text-align: left;
+    position: relative;
+    left: 20px;
+    top: 15px;
+    font-size: 18px;
+}
+
+.repairBenchFrame .containerFlex {
+    left: 23px;
+    top: 227px;
+}
+
+.repairBenchFrame .materialNotice {
+    width: 255px;
+    font-size: 16px;
+    position: absolute;
+    left: 146px;
+    top: 40px;
+    color: #CCC;
+    line-height: 21px;
+}
+
+.repairBenchFrame h2 span {
+    color: #FFF;
+    font-weight: normal;
+}
+
+.repairBenchFrame .alcoholIcon {
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 45px;
+    left: 16px;
+}
+
+.hudBox.repairBenchFrame h3 {
+    text-transform: uppercase;
+    padding-top: 15px;
+}
+
+.repairBenchFrame .repairItemBox {
+    border: 8px solid #AAA;
+    height: 105px;
+    position: absolute;
+    width: 104px;
+    top: 76px;
+    background-color: rgba(0,0,0,0.3);
+    left: 159px;
+}
+
+.hudButtonBox .repairButton {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #FFF;
+    position: absolute;
+    border: 2px solid #CCC;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px;
+    width: 429px;
+    text-align: center;
+}
+
+.repairTimeBox {
+    width: 100%;
+    height: 38px;
+    margin-bottom: 2px;
+}
+
+.repairTimeBox h2 {
+    width: 72%;
+    margin: 0 auto;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+
+.hudBox.trashContainer {
+    height: 430px;
+}
+
+.trashContainer .containerFlex {
+    position: absolute;
+    left: 15px;
+    top: 25px;
+}
+.trashContainer .trashDiscardBox {
+    border: 2px solid #000;
+    box-shadow: 0px 0px 40px 2px inset rgba(255, 255, 255, 0.5);
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 390px;
+    height: 390px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.trashDiscardBox .dropItemText {
+    position: absolute;
+    font-size: 27px;
+    top: 175px;
+    width: 386px;
+    text-align: center;
+    color: rgba(214, 214, 214, 0.5);
+}
+
+.hudElementsFrame.furnaceWidth {
+    width: 340px;
+}
+
+.hudBox.furnaceWrap {
+    height: 515px;
+}
+
+.furnaceColumn.columnOne {
+    position: absolute;
+    left: 20px;
+    top: 39px;
+}
+
+.furnaceWrap .timer {
+    font-size: 16px;
+}
+
+.furnaceWrap .containerFlex {
+    flex-wrap: wrap;
+}
+
+.furnaceWrap .emptyContainer {
+    margin-top: -1px;
+}
+
+.furnaceWrap .valueContainer {
+    border: 1px solid #FFF;
+    width: 90px;
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 323px;
+    position: absolute;
+}
+
+.valueContainer span {
+    position: absolute;
+    bottom: -1px;
+    left: 2px;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #AAA;
+}
+
+.furnaceWrap .meltButton {
+    border: 2px solid #CCC;
+    text-transform: uppercase;
+    color: #ff9300;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px 21px;
+    position: absolute;
+    top: 428px;
+}
+
+.furnaceWrap .furnaceHeader {
+    width: 100%;
+    text-align: center;
+    padding: 6px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #c6c6c8;
+    font-weight: bold;
+}
+
+.furnaceColumn.columnTwo {
+    position: absolute;
+    left: 125px;
+    top: 39px;
+}
+
+.furnaceColumn.columnThree {
+    position: absolute;
+    left: 230px;
+    top: 39px;
+}
+
+.furnaceWrap .containerFlex {
+    width: 96px;
+}
+
+.dryingRackContainer .containerFlex {
+    position: absolute;
+    left: 15px;
+    top: 25px;
+}
+
+.hudBox.dryingRackContainer {
+    height: 243px;
+}
+
+.dryingRackContainer .emptyContainer {
+    width: 68px !important;
+    height: 68px !important;
+}
+
+.hudBox.tanningRackFrame {
+    height: 430px;
+    margin-bottom: 5px;
+}
+
+.tanningRackFrame .tanLeatherBox {
+    border: 8px solid #AAA;
+    height: 105px;
+    position: absolute;
+    width: 104px;
+    top: 160px;
+    background-color: rgba(0,0,0,0.3);
+    left: 164px;
+}

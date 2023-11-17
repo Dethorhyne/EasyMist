@@ -1,0 +1,54 @@
+<% layout('/api-main') -%>
+<a href="/api/itemrepairs" class="control-return"><button>Back to Recipe list</button></a>
+<a href="/api/itemrepair/new" class="control-new"><button>New recipe</button></a>
+<a href="/api/itemrepair/<%-view.ItemRepairComponents.ItemRepair.ItemRepairId-1%>" class="control-previous"><button>Previous Item Repair</button></a>
+<a id="nextButton" href="/api/itemrepair/<%-view.ItemRepairComponents.ItemRepair.ItemRepairId+1%>" class="control-next"><button>Next Item Repair</button></a>
+<hr />
+<hr />
+<div class="hidden">
+    <select id="Ingredients">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+</div>
+<form id="ItemRepairForm" data-itemrepair="<%-view.ItemRepairComponents.ItemRepair.ItemRepairId%>">
+    <label>Repaired item</label>
+    <select id="ItemRepairTypeId">
+        <% if(view.ItemRepairTypes != null){ view.ItemRepairTypes.forEach(function(ItemRepairType){ %>
+            <option <%if(ItemRepairType.ItemRepairTypeId == view.ItemRepairComponents.ItemRepair.ItemRepairTypeId) {%>selected<%}%> value="<%=ItemRepairType.ItemRepairTypeId%>"><%=ItemRepairType.LowRange%>% - <%=ItemRepairType.HighRange%>%</option>
+        <% }) } %>
+    </select> 
+    <br />
+    <label>Repaired item</label>
+    <select id="RepairedItemId">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+        <option <%if(Item.ItemId == view.ItemRepairComponents.ItemRepair.ItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+    <br />
+    <input type="number" value="<%=view.ItemRepairComponents.ItemRepair.RepairTimeInMinutes%>" id="RepairTimeInMinutes" placeholder="Building time in minutes" />
+    <hr />
+    <div id="ingredients">
+        <% if(view.ItemRepairComponents.Ingredients != null) { view.ItemRepairComponents.Ingredients.forEach(function(Ingredient){%>
+            <div class="ingredient">
+                <select class="IngredientItem">
+                    <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+                    <option <%if(Item.ItemId == Ingredient.IngredientItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+                    <% }) } %>
+                </select>
+                <input class="IngredientAmount" value="<%=Ingredient.IngredientAmount%>"  type="number" placeholder="Item amount">
+                <button class="removeIngredient">Remove this ingredient</button>
+            </div>
+        <%}) } %>
+    </div>
+    <button id="addIngredient" class="control-add-ingredient">Add ingredient</button>
+    <hr />
+    <hr />
+    <button id="saveItemRepair" class="control-save">Save item repair</button>
+    <label id="status"></label>
+</form>
+<hr />
+
+<hr />
+<%-include("partials/itemRepairView", {itemRepair: view.ItemRepairComponents.ItemRepair }) %>

@@ -1,0 +1,37 @@
+<% layout('/api-main') -%>
+<% 
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    view.Update.UpdateDateHTML = formatDate(view.Update.UpdateDate);
+
+%> 
+<a href="/api/updates" class="control-return"><button>Back to Update list</button></a>
+<a href="/api/update/new" class="control-new"><button>New update</button></a>
+<a href="/api/update/<%-view.Update.UpdateId-1%>" class="control-previous"><button>Previous Update</button></a>
+<a id="nextButton" href="/api/update/<%-view.Update.UpdateId+1%>" class="control-next"><button>Next Update</button></a>
+<hr />
+<hr />
+<form id="UpdateForm" data-update="<%-view.Update.UpdateId%>">
+    <input type="text" value="<%=view.Update.UpdateVersion%>" id="UpdateVersion" placeholder="Update version" />
+    <br />
+    <input type="date" value="<%=view.Update.UpdateDateHTML%>" id="UpdateDate" placeholder="Update name" />
+    <br />
+    <textarea id="Changelist" style="min-width:700px; min-height:450px;"><%=view.Update.Changelist%></textarea>
+    <hr />
+    <button id="saveUpdate" class="control-save">Save update</button>
+    <button id="deleteUpdate" class="control-delete">Delete update</button>
+    <label id="status"></label>
+</form>
+<hr />

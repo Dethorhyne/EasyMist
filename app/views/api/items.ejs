@@ -1,0 +1,36 @@
+<% layout('/api-main') -%>
+
+<a href="/api" class="control-return"><button>Return to menu</button></a>
+<h1>Item list</h1>
+<a href="/api/item/new" class="control-new"><button>Add new item</button></a>
+<input id="filter" type="text" placeholder="Filter table"/>
+<table border="1">
+    <thead>
+        <tr>
+            <td>ItemId</td>
+            <td>Icon</td>
+            <td>Name</td>
+            <td>Category</td>
+            <td>Description</td>
+            <td>Stack Size</td>
+            <td>Is Craftable</td>
+            <td>Has Durability</td>
+            <td>Is Equipable</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (view.Items != null) { view.Items.forEach(function(item){%>
+            <tr>
+                <td><%=item.ItemId%></td>
+                <td><img class="tableIcon" src="/Images/Items/<%=item.Name.toLowerCase().replace(/ /g, "_")%>.png" /></td>
+                <td><a href="/api/item/<%=item.ItemId%>"><%=item.Name%></a></td>
+                <td><%=item.CategoryName%></td>
+                <td><%=item.Description%></td>
+                <td><%=item.StackSize%></td>
+                <td><%=item.IsCraftable%></td>
+                <td><%=item.HasDurability%></td>
+                <td><%=item.IsEquipable%></td>
+            </tr>
+        <%})}%>
+    </tbody>
+</table>

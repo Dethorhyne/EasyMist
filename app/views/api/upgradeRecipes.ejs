@@ -1,0 +1,24 @@
+<% layout('/api-main') -%>
+
+<a href="/api" class="control-return"><button>Return to menu</button></a>
+<h1>Building recipe list</h1>
+<a href="/api/upgraderecipe/new" class="control-new"><button>Add new upgrade recipe</button></a>
+<input id="filter" type="text" placeholder="Filter table"/>
+<table border="1">
+    <thead>
+        <tr>
+            <td>Structure name</td>
+            <td>Building recipe</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (view.UpgradeRecipes != null) { view.UpgradeRecipes.forEach(function(UpgradeRecipe){%>
+            <tr>
+                <td><a href="/api/upgraderecipe/<%=UpgradeRecipe.UpgradeRecipeId%>"><%=UpgradeRecipe.StructureName%> - <%=UpgradeRecipe.Name%></a></td>
+                <td>
+                    <%-include("partials/upgradeRecipeView", {upgradeRecipe: UpgradeRecipe }) %>
+                </td>
+            </tr>
+        <%})}%>
+    </tbody>
+</table>

@@ -1,0 +1,63 @@
+<% layout('/api-main') -%>
+<a href="/api/buildingrecipes" class="control-return"><button>Back to Recipe list</button></a>
+<a href="/api/buildingrecipe/new" class="control-new"><button>New recipe</button></a>
+<a href="/api/buildingrecipe/<%-view.BuildingRecipeComponents.BuildingRecipe.BuildingRecipeId-1%>" class="control-previous"><button>Previous Building Recipe</button></a>
+<a id="nextButton" href="/api/buildingrecipe/<%-view.BuildingRecipeComponents.BuildingRecipe.BuildingRecipeId+1%>" class="control-next"><button>Next Building Recipe</button></a>
+<hr />
+<hr />
+<div class="hidden">
+    <select id="Ingredients">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+</div>
+<form id="BuildingRecipeForm" data-buildingrecipe="<%-view.BuildingRecipeComponents.BuildingRecipe.BuildingRecipeId%>">
+    <label>Built Structure</label>
+    <select id="BuiltStructureId">
+        <% if(view.Structures != null){ view.Structures.forEach(function(Structure){ %>
+        <option <%if(Structure.StructureId == view.BuildingRecipeComponents.BuildingRecipe.StructureId) {%>selected<%}%> value="<%=Structure.StructureId%>"><%=Structure.Name%></option>
+        <% }) } %>
+    </select> 
+    <input type="number" value="<%=view.BuildingRecipeComponents.BuildingRecipe.BuildTimeInMinutes%>" id="BuildTimeInMinutes" placeholder="Building time in minutes" />
+    <br />
+    <br />
+    <label>Tool requirement (1)</label>
+    <select id="RequiredToolOneId">
+        <option value="0">Select tool</option>
+        <% if(view.Tools != null){ view.Tools.forEach(function(Item){ %>
+            <option <%if(Item.ItemId == view.BuildingRecipeComponents.BuildingRecipe.ToolOneItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select>
+    <br />
+    <label>Tool requirement (2)</label>
+    <select id="RequiredToolTwoId">
+        <option value="0">Select tool</option>
+        <% if(view.Tools != null){ view.Tools.forEach(function(Item){ %>
+            <option <%if(Item.ItemId == view.BuildingRecipeComponents.BuildingRecipe.ToolTwoItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select>
+    <hr />
+    <div id="ingredients">
+        <% if(view.BuildingRecipeComponents.Ingredients != null) { view.BuildingRecipeComponents.Ingredients.forEach(function(Ingredient){%>
+            <div class="ingredient">
+                <select class="IngredientItem">
+                    <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+                    <option <%if(Item.ItemId == Ingredient.IngredientItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+                    <% }) } %>
+                </select>
+                <input class="IngredientAmount" value="<%=Ingredient.IngredientAmount%>"  type="number" placeholder="Item amount">
+                <button class="removeIngredient">Remove this ingredient</button>
+            </div>
+        <%}) } %>
+    </div>
+    <button id="addIngredient" class="control-add-ingredient">Add ingredient</button>
+    <hr />
+    <hr />
+    <button id="saveBuildingRecipe" class="control-save">Save building recipe</button>
+    <label id="status"></label>
+</form>
+<hr />
+
+<hr />
+<%-include("partials/buildingRecipeView", {buildingRecipe: view.BuildingRecipeComponents.BuildingRecipe }) %>

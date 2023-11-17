@@ -1,0 +1,43 @@
+<% layout('/api-main') -%>
+<a href="/api/structures" class="control-return"><button>Back to Structure list</button></a>
+<a href="/api/structure/new" class="control-new"><button>New structure</button></a>
+<a href="/api/structure/<%-view.Structure.StructureId-1%>" class="control-previous"><button>Previous Structure</button></a>
+<a id="nextButton" href="/api/structure/<%-view.Structure.StructureId+1%>" class="control-next"><button>Next Structure</button></a>
+<hr />
+<hr />
+<form id="StructureForm" data-structure="<%=view.Structure.StructureId%>">
+    <input type="text" id="Name" value="<%=view.Structure.Name%>" placeholder="Structure name" />
+    <br />
+    <label>Building Category</label>
+    <select id="BuildingCategoryId">
+        <option value="0">Select category</option>
+        <% if(view.BuildingCategories != null){ view.BuildingCategories.forEach(function(BuildingCategory){ %>
+            <option <%if(BuildingCategory.BuildingCategoryId == view.Structure.BuildingCategoryId) {%>selected<%}%> value="<%=BuildingCategory.BuildingCategoryId%>"><%=BuildingCategory.Name%></option>
+        <% }) } %>
+    </select>
+    <br />
+    <textarea id="Description" placeholder="Description" style="min-width:400px; min-height:150px;"><%=view.Structure.Description%></textarea>
+    <br />
+    <input type="number" value="<%=view.Structure.StorageAmount%>" id="StorageAmount" placeholder="Storage amount" />
+    <br />
+    <label><input type="checkbox" id="IsElectricityRequired" <% if(view.Structure.IsElectricityRequired) {%>checked<% } %> />Is electricity required?</label>
+    <br />
+    <label><input type="checkbox" id="IsCraftStation" <% if(view.Structure.IsCraftStation) {%>checked<% } %> />Is this a crafting station?</label>
+    <br />
+    <input type="number" value="<%=view.Structure.EnergyConsumption%>" id="EnergyConsumption" placeholder="Energy consumption" />
+    <br />
+    <input type="text" id="StructureUI" value="<%=view.Structure.StructureUI%>" placeholder="Structure UI partial" />
+    <hr />
+    <hr />
+    <button id="saveStructure" class="control-save">Save structure</button>
+    <label id="status"></label>
+</form>
+<hr />
+
+<% if(view.Structure.StructureUI) { %>
+    <div class="itemBox">
+        <div class="hudUI">
+            <%-include("partials/hud/"+view.Structure.StructureUI)%>
+        </div>
+    </div>
+<% } %>

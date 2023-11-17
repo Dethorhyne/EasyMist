@@ -1,0 +1,17 @@
+<% layout('/main') -%>
+
+<h2 class="sectionTitle">Items</h2>
+<section class="itemPreviewBox">
+    <% if (view.Items != null) { view.Items.forEach(function(Item){%>
+        <article class="itemFrame">
+            <p class="itemName"><a href="/item/<%=Item.ItemId%>"><%=Item.Name%></a></p>
+            <div class="imageFrame">
+                <a href="/item/<%=Item.ItemId%>"><img class="itemImage" src="/Images/Items/<%=Item.Name.toLowerCase().replace(/ /g, "_")%>.png" /></a>
+                <% if(Item.StackSize > 1)  {%>
+                    <p class="itemStackSize">x<%=Item.StackSize%></p>
+                <% } %>
+            </div>
+            <p class="itemDescription"><%=Item.Description%></p>
+        </article>
+    <% })} %>
+</section>

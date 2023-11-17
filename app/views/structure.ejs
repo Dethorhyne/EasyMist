@@ -1,0 +1,79 @@
+<% layout('/main') -%>
+
+<div class="itemBox">
+    <div class="flexBox titleFrame">
+        <div class="titleBox">
+            <h2><a href="#/buildingcategory/<%=view.Structure.BuildingCategoryId%>"><%=view.Structure.BuildingCategoryName%></a> - <%=view.Structure.Name%></h2>
+        </div>
+        <div class="attributeBox">
+            <%if(view.Structure.StorageAmount != null) { %>
+                <p class="label labelGreen">Has storage</p>
+            <% } else { %>
+                <p class="label labelOrange">No storage</p>
+            <% } %>
+            <%if(view.Structure.IsElectricityRequired) { %>
+                <p class="label labelOrange">Requires power</p>
+            <% } %>
+        </div>
+    </div>
+    <div class="flexBox">
+        <div class="imageBox">
+            <img src="/Images/Structures/<%=view.Structure.Name.toLowerCase().replace(/ /g,"_")%>.png" />
+            <%if(view.Structure.StackSize > 1) { %>
+                <p>x<%=view.Structure.StackSize%></p>
+            <% } %>
+        </div>
+        <div class="descriptionBox">
+            <p>
+                <%=view.Structure.Description%>
+            </p>
+            <%if(view.Structure.StorageAmount != null) { %>
+                <p>Storage space: <%=view.Structure.StorageAmount%></p>
+            <% } %>
+            <%if(view.Structure.IsElectricityRequired != null) { %>
+                <p>Required electricity: <%=view.Structure.EnergyConsumption%></p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<% if(view.Structure.StructureUI) { %>
+    <div class="itemBox">
+        <h3><%=view.Structure.Name%> UI view</h3>
+        <div class="hudUI">
+            <%-include("partials/hud/"+view.Structure.StructureUI)%>
+        </div>
+    </div>
+<% } %>
+<%if(view.BuildingRecipe) {%>
+    <div class="itemBox">
+        <h3>Building recipe</h3>
+        <div class="craftingBox">
+            <%-include("partials/buildingRecipeView", {buildingRecipe: view.BuildingRecipe }) %>
+        </div>
+    </div>
+<%}%>
+
+<% if(view.UpgradeRecipes) { if(view.UpgradeRecipes.length > 0) {%>
+    <div class="itemBox">
+        <h3>Upgrade recipes <span>Upgrade recipes for <%=view.Structure.Name%></span></h3>
+        <div class="craftingBox">
+        <% view.UpgradeRecipes.forEach(function(recipe){%>
+            <%-include("partials/upgradeRecipeView", {upgradeRecipe: recipe }) %>
+        <%})%>
+        </div>
+    </div>
+<%}}%>
+
+<% if(view.Structure.IsCraftStation) { %>
+    <% if(view.CraftingRecipes) { if(view.CraftingRecipes.length > 0) {%>
+        <div class="itemBox">
+            <h3>Crafting recipes <span>Which items can be crafted via <%=view.Structure.Name%>:</span></h3>
+            <div class="craftingBox">
+            <% view.CraftingRecipes.forEach(function(recipe){%>
+                <%-include("partials/structureCraftingRecipeView", {recipe: recipe }) %>
+            <%})%>
+            </div>
+        </div>
+    <%}}%>
+<% } %>

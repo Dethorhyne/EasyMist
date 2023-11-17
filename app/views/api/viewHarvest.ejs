@@ -1,0 +1,47 @@
+<% layout('/api-main') -%>
+<a href="/api/harvests" class="control-return"><button>Back to Recipe list</button></a>
+<a href="/api/harvest/new" class="control-new"><button>New recipe</button></a>
+<a href="/api/harvest/<%-view.HarvestComponents.Harvest.HarvestId-1%>" class="control-previous"><button>Previous Harvest</button></a>
+<a id="nextButton" href="/api/harvest/<%-view.HarvestComponents.Harvest.HarvestId+1%>" class="control-next"><button>Next Harvest</button></a>
+<hr />
+<hr />
+<form id="HarvestForm" data-harvest="<%=view.HarvestComponents.Harvest.HarvestId%>">
+    <label>Harvested Item</label>
+    <select id="HarvestedItemId">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option <%if(Item.ItemId == view.HarvestComponents.Harvest.HarvestedItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+    <br />
+    <label>Tool requirement</label>
+    <select id="ToolItemId">
+        <option value="0">Select tool</option>
+        <% if(view.Tools != null){ view.Tools.forEach(function(Item){ %>
+            <option <%if(Item.ItemId == view.HarvestComponents.Harvest.ToolItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select>
+    <hr />
+    <div id="gainedItems">
+        <% if(view.HarvestComponents.HarvestGains != null) { view.HarvestComponents.HarvestGains.forEach(function(GainedItem){%>
+            <div class="gainedItem">
+                <select class="GainedItemId">
+                    <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+                    <option <%if(Item.ItemId == GainedItem.ItemId) {%>selected<%}%> value="<%=Item.ItemId%>"><%=Item.Name%></option>
+                    <% }) } %>
+                </select>
+                <input class="LowRange" value="<%=GainedItem.LowRange%>"  type="number" placeholder="Low range">
+                <input class="HighRange" value="<%=GainedItem.HighRange%>"  type="number" placeholder="High range">
+                <input class="HarvestTime" value="<%=GainedItem.HarvestTime%>"  type="number" placeholder="Harvest time">
+                <button class="removeGainedItem">Remove this gained item</button>
+            </div>
+        <%}) } %>
+    </div>
+    <button id="addGainedItem" class="control-add-ingredient">Add gained item</button>
+    <hr />
+    <hr />
+    <button id="saveHarvest" class="control-save">Save harvest</button>
+    <label id="status"></label>
+</form>
+<hr />
+
+<%-include("partials/harvestView", {harvest: view.HarvestComponents.Harvest }) %>

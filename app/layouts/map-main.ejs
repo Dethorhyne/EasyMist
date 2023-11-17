@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Easy Mist - Map</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/hud.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <script src="/js/ajax.js"></script>
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+        <script src="/js/script.js"></script>
+    </head>
+
+    <body>
+        <header>
+        </header>
+        <main>
+        <%- body %>
+        </main>
+        <footer>
+            <div class="footerContent">
+                <div class="flexBox">
+                    <div class="footerBox authorBox">
+                        <a class="footerLink visitTwitter" href="https://twitter.com/DethoRhyne">@DethoRhyne</a>
+                        <a class="footerLink visitYouTube" href="https://www.youtube.com/channel/UC1cXrajHXwQ0ur90Azpum0Q">RMDetho</a>
+                    </div>
+                    <div class="footerBox donateBox">
+                        <a class="footerLink donatePaypal" href="https://paypal.me/RMDetho">Paypal</a>
+                        <a class="footerLink donateKofi" href="https://ko-fi.com/rmdetho"><img src="https://storage.ko-fi.com/cdn/cuplogo-sm.png" /> Buy me a coffee</a>
+                    </div>
+                </div>
+                <div class="footerBox disclaimerBox">
+                    Content is available under CC BY-NC-SA 3.0 unless otherwise noted.
+                    Game content and materials are trademarks and copyrights of their respective publisher and its licensors. All rights reserved.
+                    This is a fan-made site and is not affiliated with the game publisher.
+                </div>
+                <div class="copyrightBox">
+                    <p>Easy Mist © 2020 by RMDetho</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <script src="/js/map.js"></script>
+</html>

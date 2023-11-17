@@ -1,0 +1,27 @@
+
+<% 
+upgradeRecipe.Ingredients = JSON.parse(upgradeRecipe.Ingredients_JSON);
+%> 
+
+<div class="scaleWrap">
+    <div class="upgradeRecipe craftingRecipeFrame">
+        <div class="iconImage" title="<%=upgradeRecipe.BuiltStructureName%>" style="background-image:url('/Images/Structures/<%=upgradeRecipe.builtStructureImageName%>.png');"><a title="View structure" href="/structure/<%=upgradeRecipe.StructureId%>"></a></div>
+        <p class="recipeName"><a title="View structure" href="/structure/<%=upgradeRecipe.StructureId%>"><%=upgradeRecipe.StructureName%> - <%=upgradeRecipe.Name%></a></p>
+        <p class="craftTime" title="In-game time">Upgrade time : <span><%=upgradeRecipe.BuildTimeHR%></span></p>
+        <div class="ingredientsContainer">
+                <%if(upgradeRecipe.Ingredients != null) { %>
+                    <% upgradeRecipe.Ingredients.forEach(function(Ingredient){ %>
+                        <%-include("partials/ingredientBox", 
+                        {ingredient: {
+                            Name: Ingredient.Name, 
+                            ItemId: Ingredient.ItemId, 
+                            Amount : Ingredient.IngredientAmount, 
+                            Image : Ingredient.Name.toLowerCase().replace(/ /g, "_"), 
+                            IsWater: false
+                            }
+                        });%>
+                    <% }) %>
+                <% } %>
+        </div>
+    </div>
+</div>

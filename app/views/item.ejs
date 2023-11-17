@@ -1,0 +1,104 @@
+<% layout('/main') -%>
+
+<div class="itemBox">
+    <div class="flexBox titleFrame">
+        <div class="titleBox">
+            <h2><a href="#/materials/<%=view.Item.CategoryId%>"><%=view.Item.CategoryName%></a> - <%=view.Item.Name%></h2>
+        </div>
+        <div class="attributeBox">
+            <%if(view.Item.StackSize > 1) { %>
+                <p class="label labelGreen">Stacks</p>
+            <% } else { %>
+                <p class="label labelOrange">Doesn't stack</p>
+            <% } %>
+            <%if(view.Item.IsCraftable) {%>
+                <p class="label labelGreen">Craftable</p>
+            <% } else { %>
+                <p class="label labelRed">Non-craftable</p>
+            <% } %>
+            <%if(view.Item.HasDurability) { %>
+                <p title="Item has limited durability that's decreased either by using the item or over time" class="label labelRed">Wears off</p>
+            <% } %>
+            <%if(view.Item.IsEquipable) { %>
+                <p title="Item can be equiped to a hotkey" class="label labelGreen">Can be equipped</p>
+            <% } %>
+        </div>
+    </div>
+    <div class="flexBox">
+        <div class="imageBox">
+            <img src="/Images/Items/<%=view.Item.Name.toLowerCase().replace(/ /g,"_")%>.png" />
+            <%if(view.Item.StackSize > 1) { %>
+                <p>x<%=view.Item.StackSize%></p>
+            <% } %>
+        </div>
+        <div class="descriptionBox">
+            <p>
+                <%=view.Item.Description%>
+            </p>
+        </div>
+    </div>   
+</div>
+
+<%if(view.CraftingRecipes.length > 0) {%>
+    <div class="itemBox">
+        <h3>Crafting Recipes <span>How can <%=view.Item.Name%> be crafted:</span></h3>
+        <div class="craftingBox">
+        <% view.CraftingRecipes.forEach(function(recipe){%>
+            <% if(recipe.RequiredStructureId == null || recipe.RequiredStructureId == undefined) { %>
+                <%-include("partials/basicCraftingRecipeView", {recipe: recipe }) %>
+            <%} else { %>
+                <%-include("partials/structureCraftingRecipeView", {recipe: recipe }) %>
+            <% } %>
+        <%})%>
+        </div>
+    </div>
+<%}%>
+
+<% if(view.Harvests.length > 0) {%>
+    <div class="itemBox">
+        <h3>Harvesting <span>Inventory harvest related to <%=view.Item.Name%>:</span></h3>
+        <div class="craftingBox">
+        <% view.Harvests.forEach(function(harvest){%>
+            <%-include("partials/harvestView", {harvest: harvest }) %>
+        <%})%>
+        </div>
+    </div>
+<%}%>
+
+<%if(view.ItemRepairs) { if(view.ItemRepairs.length > 0) {%>
+    <div class="itemBox">
+        <h3>Item repairing <span>What's needed to get <%=view.Item.Name%> repaired:</span></h3>
+        <div class="itemRepairBox">
+        <% view.ItemRepairs.forEach(function(itemRepair){%>
+            <%-include("partials/itemRepairView", {itemRepair: itemRepair }) %>
+        <%})%>
+        </div>
+    </div>
+<%}}%>
+    
+<% if(view.IngredientRecipes.length > 0) {%>
+    <div class="itemBox">
+        <h3>Ingredient recipes <span>Which items require <%=view.Item.Name%> to be crafted:</span></h3>
+        <div class="craftingBox">
+        <% view.IngredientRecipes.forEach(function(recipe){%>
+            <% if(recipe.RequiredStructureId == null || recipe.RequiredStructureId == undefined) { %>
+                <%-include("partials/basicCraftingRecipeView", {recipe: recipe }) %>
+            <%} else { %>
+                <%-include("partials/structureCraftingRecipeView", {recipe: recipe }) %>
+            <% } %>
+        <%})%>
+        </div>
+    </div>
+<%}%>
+
+<% if(view.BuildingRecipes.length > 0) {%>
+    <div class="itemBox">
+        <h3>Building recipes <span>Which structures require <%=view.Item.Name%> to be built:</span></h3>
+        <div class="craftingBox">
+        <% view.BuildingRecipes.forEach(function(recipe){%>
+            <%-include("partials/buildingRecipeView", {buildingRecipe: recipe }) %>
+        <%})%>
+        </div>
+    </div>
+<%}%>
+

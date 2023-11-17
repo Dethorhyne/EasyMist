@@ -1,0 +1,26 @@
+<% layout('/api-main') -%>
+
+<a href="/api" class="control-return"><button>Return to menu</button></a>
+<h1>Update list</h1>
+<a href="/api/update/new" class="control-new"><button>Add new update</button></a>
+<input id="filter" type="text" placeholder="Filter table"/>
+<table border="1">
+    <thead>
+        <tr>
+            <td>UpdateId</td>
+            <td>Update version</td>
+            <td>Update Date</td>
+            <td>Changelist</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (view.Updates != null) { view.Updates.forEach(function(Update){%>
+            <tr>
+                <td><%=Update.UpdateId%></td>
+                <td><a href="/api/Update/<%=Update.UpdateId%>"><%=Update.UpdateVersion%></a></td>
+                <td><%=Update.UpdateDate.toLocaleDateString(undefined)%></td>
+                <td><%=Update.Changelist%></td>
+            </tr>
+        <%})}%>
+    </tbody>
+</table>

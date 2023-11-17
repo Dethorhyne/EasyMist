@@ -1,0 +1,992 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    background-color: #484e56;
+    color: rgb(226, 229, 231);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #fbfbfb;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #ebd779;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+header, main, footer {
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header {
+    max-width: 1200px;
+    background-color: #1e2023;
+}
+
+main {
+    max-width: 1200px;
+    padding: 20px;
+    transition: padding 0.5s;
+}
+
+footer {
+    background-color: #1e2023;
+    padding: 15px;
+}
+
+footer .footerContent {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.disclaimerBox {
+    font-size: 12px;
+    line-height: 12px;
+    color: #AAA;
+}
+
+.footerLink {
+    border-radius: 30px;
+    color: #FFF;
+    padding: 10px;
+    margin-top: 5px;
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    line-height: 16px;
+}
+
+.donatePaypal {
+    background-color: #0070ba;
+}
+
+.donateKofi {
+    background-color: #ff5f5f;
+    padding: 10px 10px 10px 43px;
+}
+
+.visitTwitter {
+    background-color: #1da1f2;
+}
+
+.visitYouTube {
+    background-color: #fa2525;
+}
+
+header .headerLogo {
+    max-height: 150px;
+    padding: 10px;
+}
+
+.navigation {
+    list-style: none;
+    display: flex;
+}
+
+.navigation li {
+    display: inline-block;
+    height: 45px;
+    margin-left: 5px;
+}
+
+.navigation li a {
+    color: #bec3d6;
+    padding: 12px;
+    display: block;
+}
+
+.navigation li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navigation li a:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+input#search {
+    border: 0px;
+    padding: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-right: 10px;
+    width: 275px;
+    border-radius: 3px;
+}
+
+.actionableButton {
+    cursor: pointer;
+}
+
+ul.navigation li:last-of-type {
+    margin-left: auto;
+}
+
+a.donateKofi img {
+    position: absolute;
+    height: 16px;
+    top: 10px;
+    left: 14px;
+}
+
+.footerBox {
+    padding: 10px;
+    border-bottom: 1px solid #777;
+    width: 100%;
+}
+
+.footerBox.copyrightBox {
+    border-bottom: 0px;
+}
+
+.flexBox {
+    display: flex;
+    width: 100%;
+}
+
+.label {
+    padding: 4px;
+    border-radius: 5px;
+    color: #FFF;
+}
+
+.labelGreen {
+    background-color: rgb(49, 185, 37);
+}
+
+.labelRed {
+    background-color: rgb(251, 35, 35);
+}
+
+.labelOrange {
+    background-color: rgb(232, 121, 17);
+}
+
+.updateFeed {
+    padding: 5px 0px
+}
+
+.updateFeed article {
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.updateFeed article h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.updateFeed article h4 span {
+    font-size: 14px;
+    color: #AAA;
+    margin-left: 10px;
+}
+
+article.itemFrame {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+section.itemPreviewBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.itemBox .flexBox {
+    justify-content: space-between;
+}
+
+.itemBox .titleBox {
+    padding-bottom: 3px;
+}
+
+.itemFrame .itemName a {
+    padding: 10px;
+    display: block;
+}
+
+.itemFrame .itemName a:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.imageFrame {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+p.itemStackSize {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 20px;
+    pointer-events: none;
+}
+
+.itemDescription {
+    padding: 10px;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal .modalContent {
+    width: 100%;
+    max-width: 550px;
+    background-color: #444;
+    box-shadow: 0px 0px 25px 5px #000;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal .modalBody {
+    padding: 10px;
+}
+
+.modal .modalFooter {
+    padding: 0px 10px 10px 10px;
+}
+
+.modal .modalHeader {
+    padding: 0px 0px 0px 10px;
+    position: relative;
+}
+
+.modal .modalHeader .closeModal {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.modal .modalHeader .closeModal:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.modal .modalHeader .closeModal:active {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modalHeader h2 {
+    line-height: 41px;
+    margin-right: 43px;
+}
+
+.modal select {
+    background-color: #222;
+    color: #FFF;
+    border: 0px;
+    padding: 5px;
+    font-size: 16px;
+    margin: 5px 0px 15px 0px;
+    width: 100%;
+}
+
+.modal #modalReport_Content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 150px;
+    max-height: 350px;
+    margin-bottom: 10px;
+}
+
+.modal .buttonFrame {
+    text-align: right;
+}
+
+.modal button {
+    border: 0px;
+    padding: 8px 12px;
+    color: #FFF;
+    background-color: #787878;
+}
+
+.modal button:hover {
+    background-color: #888888;
+}
+
+.modal button:active {
+    background-color: #3a3a3a;
+}
+
+.itemImage {
+    max-width: 95%
+}
+
+.itemBox {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: padding 0.5s;
+}
+
+.itemBox .attributeBox p {
+    font-size: 15px;
+    line-height: 15px;
+    display: inline-block;
+}
+
+.itemBox .titleFrame {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #aaa;
+}
+
+.itemBox .imageBox {
+    padding: 0px 10px;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.itemBox .descriptionBox {
+    padding: 0px 10px;
+    overflow: auto;
+    width: 100%;
+}
+
+.itemBox .imageBox p {
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    font-size: 20px;
+}
+
+.itemBox h3 span {
+    color: #AAA;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.scaleWrap {
+    overflow: hidden;
+    display: inline-block;
+    margin: 5px;
+}
+
+.craftingRecipeFrame {
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    background-color: rgba(31, 31, 31, 0.8);
+    margin: 0px;
+    display: inline-block;
+}
+
+.basicCraftingRecipe {
+    width: 550px;
+    height: 175px;
+}
+
+.structureCraftingRecipe {
+    width: 550px;
+    height: 200px;
+}
+
+.upgradeRecipe {
+    width: 440px;
+    height: 120px;
+}
+
+.craftingRecipeFrame .iconImage {
+    width: 140px;
+    height: 153px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.craftingRecipeFrame .recipeName {
+    font-weight: bold;
+    position: absolute;
+    font-size: 18px;
+    margin: 3px 0px;
+    top: 5px;
+}
+
+.craftingRecipeFrame:not(.upgradeRecipe) .recipeName {
+    left: 150px;
+}
+
+.craftingRecipeFrame.upgradeRecipe .recipeName {
+    left: 10px;
+}
+
+.craftingRecipeFrame .recipeName a {
+    color: #ebd779;
+}
+
+.craftingRecipeFrame .craftTime {
+    color: #FFF;
+    position: absolute;
+    right: 23px;
+    font-size: 18px;
+    margin: 3px 0px;
+    top: 5px;
+}
+
+.craftingRecipeFrame .craftTime span {
+    color: #eb9f00;
+}
+
+.craftingRecipeFrame .itemYield {
+    font-size: 20px;
+    position: absolute;
+    left: 20px;
+    margin: 0;
+    top: 10px;
+}
+
+.craftingRecipeFrame .description {
+    position: absolute;
+    font-size: 15px;
+    color: #dddddd;
+    left: 164px;
+    top: 37px;
+    margin: 0px;
+    width: 362px;
+    height: 53px;
+    line-height: 15px;
+    overflow: auto;
+    word-break: break-word;
+    text-overflow: ellipsis;
+}
+
+.craftingRecipeFrame .ingredientsContainer {
+    position: absolute;
+    left: 164px;
+    top: 93px;
+    display: flex;
+}
+
+.craftingRecipeFrame:not(.buildingRecipe) .ingredientsContainer {
+    left: 164px;
+    top: 93px;
+}
+
+.craftingRecipeFrame.upgradeRecipe .ingredientsContainer {
+    left: 10px;
+    top: 40px;
+}
+
+.craftingRecipeFrame .ingredientBox {
+    border: 1px dashed #AEAEAE;
+    width: 66px;
+    height: 66px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+}
+
+.craftingRecipeFrame.basicCraftingRecipe .ingredientBox {
+    margin-left: 2px;
+}
+
+.craftingRecipeFrame.structureCraftingRecipe .ingredientBox {
+    margin-left: 5px;
+}
+
+.craftingRecipeFrame.upgradeRecipe .ingredientBox {
+    margin-left: 5px;
+}
+
+.craftingRecipeFrame .ingredientBox:first-of-type {
+    margin-left: 0px;
+}
+
+.craftingRecipeFrame .ingredientAmount {
+    position: absolute;
+    bottom: 1px;
+    right: 3px;
+    margin: 0px;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.craftingRecipeFrame .toolsContainer {
+    position: absolute;
+    left: 388px;
+    top: 93px;
+    display: flex;
+}
+
+.craftingRecipeFrame .toolBox {
+    border: 1px dashed #AEAEAE;
+    width: 66px;
+    height: 66px;
+    margin-left: 2px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    box-shadow: inset 0 0 10px #000000;
+}
+
+.craftingRecipeFrame .toolBox:first-of-type {
+    margin-left: 0px;
+}
+
+.craftingRecipeFrame .requiredStructure {
+    position: absolute;
+    bottom: 10px;
+    margin: 0px;
+    left: 10px;
+    font-weight: bold;
+}
+
+.craftingRecipeFrame .ingredientLink, .craftingRecipeFrame .toolLink {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.craftingRecipeFrame .waterIngredient {
+    box-shadow: 0px 0px 20px inset #2194a5;
+}
+
+.buildingRecipe {
+    width: 550px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    background-color: rgba(31, 31, 31, 0.8);
+    display: inline-block;
+    height: 280px;
+}
+
+.buildingRecipe .iconImage {
+    width: 260px;
+    height: 160px;
+    position: absolute;
+    left: 10px;
+    top: 35px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.buildingRecipe .recipeName {
+    font-weight: bold;
+    position: absolute;
+    left: 20px;
+    font-size: 19px;
+    margin: 3px 0px;
+    top: 7px;
+}
+
+.buildingRecipe .recipeName a {
+    color: #dad5a2;
+    text-transform: uppercase;
+}
+
+.buildingRecipe .craftTime {
+    color: #FFF;
+    position: absolute;
+    right: 34px;
+    font-size: 18px;
+    margin: 3px 0px;
+    top: 5px;
+}
+
+.buildingRecipe .craftTime span {
+    color: #ff7e00;
+    margin-left: 20px;
+}
+
+.buildingRecipe .description {
+    position: absolute;
+    font-size: 18px;
+    color: #dddddd;
+    left: 20px;
+    top: 200px;
+    margin: 0px;
+    width: 510px;
+    height: 70px;
+    line-height: 17px;
+    overflow: auto;
+    word-break: break-word;
+    text-overflow: ellipsis;
+}
+
+.buildingRecipe .ingredientsContainer {
+    position: absolute;
+    left: 286px;
+    width: 140px;
+    top: 44px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buildingRecipe .ingredientBox {
+    border: 1px dashed #AEAEAE;
+    width: 66px;
+    height: 66px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+}
+
+.buildingRecipe .ingredientAmount {
+    position: absolute;
+    bottom: 1px;
+    right: 3px;
+    margin: 0px;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.buildingRecipe .ingredientBox:nth-child(2) {
+    margin: 0px 0px 0px 3px;
+}
+
+.buildingRecipe .ingredientBox:nth-child(3) {
+    margin: 3px 0px 0px 0px;
+}
+
+.buildingRecipe .ingredientBox:nth-child(4) {
+    margin: 3px 0px 0px 3px;
+}
+
+.buildingRecipe .toolsContainer {
+    position: absolute;
+    left: 445px;
+    top: 44px;
+    width: 70px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buildingRecipe .toolBox {
+    border: 1px dashed #AEAEAE;
+    width: 66px;
+    height: 66px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    box-shadow: inset 0 0 10px #000000;
+}
+
+.buildingRecipe .toolBox:nth-child(2) {
+    margin: 3px 0px 0px 0px;
+}
+
+.sectionTitle {
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.itemRepairFrame {
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    background-color: rgba(31, 31, 31, 0.8);
+    margin: 0px;
+    display: inline-block;
+    width: 490px;
+    height: 135px;
+}
+
+.itemRepairFrame .repairTime {
+    color: #FFF;
+    position: absolute;
+    right: 23px;
+    font-size: 18px;
+    margin: 3px 0px;
+    top: 5px;
+}
+
+.itemRepairFrame .repairTime span {
+    color: #eb9f00;
+}
+
+.itemRepairFrame .repairedItemBox {
+    border: 5px solid #AAA;
+    height: 95px;
+    position: absolute;
+    width: 95px;
+    background-color: rgba(0, 0, 0, 0.3);
+    left: 10px;
+    top: 20px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.itemRepairFrame .ingredientsContainer {
+    position: absolute;
+    left: 125px;
+    top: 49px;
+    display: flex;
+}
+
+.itemRepairFrame .durabilityRange {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+    font-size: 13px;
+    text-shadow: 0px 0px 2px #000;
+}
+
+.itemRepairFrame .ingredientBox {
+    border: 1px dashed #AEAEAE;
+    margin-left: 5px;
+    width: 66px;
+    height: 66px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+}
+
+.itemRepairFrame .ingredientAmount {
+    position: absolute;
+    bottom: 1px;
+    right: 3px;
+    margin: 0px;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.repairedItemBox .durabilityType-1 {
+    color: #6e951a;
+}
+
+.repairedItemBox .durabilityType-2 {
+    color: #7a8917;
+}
+
+.repairedItemBox .durabilityType-3 {
+    color: #796903;
+}
+
+.repairedItemBox .durabilityType-4 {
+    color: #7b4b04;
+}
+
+.repairedItemBox .durabilityType-5 {
+    color: #814a01;
+}
+
+.repairedItemBox .durabilityType-6 {
+    color: #873b0a;
+}
+
+.harvestFrame {
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    background-color: rgba(31, 31, 31, 0.8);
+    margin: 0px;
+    display: inline-block;
+    width: 550px;
+    height: 135px;
+}
+
+.harvestFrame .harvestBox {
+    border: 1px dashed #AEAEAE;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    margin-left: 5px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.harvestFrame .harvestLink, .harvestFrame .harvestedItemLink, .harvestFrame .toolLink {
+    width:100%;
+    height:100%;
+    left:0px;
+    top:0px;
+    position:absolute;
+}
+
+.harvestBox .harvestAmount {
+    right: 4px;
+    bottom: 1px;
+    position: absolute;
+}
+
+.harvestBox .singleHarvestTime {
+    right: 3px;
+    top: 1px;
+    position: absolute;
+    font-size: 12px;
+}
+
+.harvestFrame .harvestTitle {
+    font-weight: bold;
+    position: absolute;
+    left: 15px;
+    font-size: 18px;
+    margin: 3px 0px;
+    top: 5px;
+    text-transform: uppercase;
+    color: #ebd779;
+}
+
+.harvestFrame .harvestTime {
+    color: #FFF;
+    position: absolute;
+    right: 23px;
+    font-size: 18px;
+    margin: 3px 0px;
+    top: 5px;
+}
+
+.harvestFrame .harvestTime span {
+    color: #eb9f00;
+}
+
+.harvestFrame .toolsContainer {
+    position: absolute;
+    left: 100px;
+    top: 40px;
+    display: flex;
+}
+
+.harvestFrame .harvestedItem {
+    width: 80px;
+    height: 80px;
+    background-position: center center;
+    background-size: contain;
+    border: 2px solid #AEAEAE;
+    position: absolute;
+    left: 15px;
+    top: 40px;
+}
+
+.harvestFrame .harvestContainer {
+    position: absolute;
+    left: 195px;
+    top: 40px;
+    width: 348px;
+    display: flex;
+}
+
+.harvestFrame .toolBox {
+    border: 1px solid #AEAEAE;
+    width: 80px;
+    height: 80px;
+    margin-left: 2px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    box-shadow: inset 0 0 10px #000000;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .flexBox {
+        flex-wrap: wrap;
+    }
+    .descriptionBox {
+        padding: 10px !important;
+    }
+    .titleBox h2 {
+        font-size: 20px;
+    }
+    .scaleWrap {
+        display: block;
+    }
+    main {
+        padding: 5px;
+    }
+    .homeLink {
+        text-align: center;
+    }
+    .headerLogo {
+        height: 100px;
+    }
+    .navigation {
+        display: block;
+    }
+    .navigation li {
+        display: block;
+        width: 100%;
+        height: 45px;
+        margin-left: 0px;
+    }
+    .navigation li:last-of-type {
+        height: 60px;
+    }
+    .navigation li a {
+        padding: 12px 10px;
+    }
+    input#search {
+        border: 0px;
+        margin: 2px 10px;
+        width: calc(100% - 30px);
+        height: 28px;
+        font-size: 20px;
+    }
+    section.itemPreviewBox {
+        justify-content: space-around;
+    }
+    .itemBox {
+        padding: 5px;
+    }
+    .itemBox .attributeBox {
+        margin-top: 2px;
+    }
+    .itemBox .titleFrame {
+        margin-bottom: 5px;
+    }
+    article.itemFrame {
+        width: 49%;
+    }
+    .itemName {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    section.itemPreviewBox {
+        justify-content: space-between;
+    }
+}

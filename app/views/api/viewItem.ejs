@@ -1,0 +1,59 @@
+<% layout('/api-main') -%>
+<a href="/api/items" class="control-return"><button>Back to Item list</button></a>
+<a href="/api/item/new" class="control-new"><button>New item</button></a>
+<a href="/api/item/<%-view.Item.ItemId-1%>" class="control-previous"><button>Previous Item</button></a>
+<a id="nextButton" href="/api/item/<%-view.Item.ItemId+1%>" class="control-next"><button>Next Item</button></a>
+<hr />
+<hr />
+<form id="ItemForm" data-item="<%-view.Item.ItemId%>">
+    <input type="text" value="<%=view.Item.Name%>" id="Name" placeholder="Item name" />
+    <br />
+    <label>Item Category</label>
+    <select id="CategoryId">
+        <option value="0">Select category</option>
+        <% if(view.Categories != null){ view.Categories.forEach(function(Category){ %>
+            <option <%if(Category.CategoryId == view.Item.CategoryId) {%>selected<%}%> value="<%=Category.CategoryId%>"><%=Category.Name%></option>
+        <% }) } %>
+    </select>
+    <br />
+    <textarea id="Description" style="min-width:400px; min-height:150px;"><%=view.Item.Description%></textarea>
+    <br />
+    <input type="number" value="<%=view.Item.StackSize%>" id="StackSize" placeholder="Stack size" />
+    <br />
+    <label><input type="checkbox" id="IsCraftable" <%if(view.Item.IsCraftable) {%>checked<%}%> />Is item craftable?</label>
+    <br />
+    <label><input type="checkbox" id="HasDurability" <%if(view.Item.HasDurability) {%>checked<%}%> />Does the item wear over time?</label>
+    <br />
+    <label><input type="checkbox" id="IsEquipable" <%if(view.Item.IsEquipable) {%>checked<%}%> />Can the item be equipped?</label>
+    <hr />
+    <button id="saveItem" class="control-save">Save item</button>
+    <label id="status"></label>
+</form>
+<hr />
+
+<% if(view.CraftingRecipes) { view.CraftingRecipes.forEach(function(recipe){%>
+
+    <% if(recipe.RequiredStructureId == null || recipe.RequiredStructureId == undefined) { %>
+
+        <%-include("partials/basicCraftingRecipeView", {recipe: recipe }) %>
+    
+    <%} else { %>
+    
+        <%-include("partials/structureCraftingRecipeView", {recipe: recipe }) %>
+    
+    <% } %>
+<%})}%>
+<hr />
+
+<% if(view.IngredientRecipes) { view.IngredientRecipes.forEach(function(recipe){%>
+
+    <% if(recipe.RequiredStructureId == null || recipe.RequiredStructureId == undefined) { %>
+
+        <%-include("partials/basicCraftingRecipeView", {recipe: recipe }) %>
+    
+    <%} else { %>
+    
+        <%-include("partials/structureCraftingRecipeView", {recipe: recipe }) %>
+    
+    <% } %>
+<%})}%>

@@ -1,0 +1,24 @@
+<% layout('/api-main') -%>
+
+<a href="/api" class="control-return"><button>Return to menu</button></a>
+<h1>Item repair list</h1>
+<a href="/api/itemrepair/new" class="control-new"><button>Add new item repair</button></a>
+<input id="filter" type="text" placeholder="Filter table"/>
+<table border="1">
+    <thead>
+        <tr>
+            <td>Repaired Item Name</td>
+            <td>Recipe view</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (view.ItemRepairs != null) { view.ItemRepairs.forEach(function(ItemRepair){%>
+            <tr>
+                <td><a href="/api/itemrepair/<%=ItemRepair.ItemRepairId%>"><%=ItemRepair.Name%></a></td>
+                <td>
+                    <%-include("partials/itemRepairView", {itemRepair: ItemRepair }) %>
+                </td>
+            </tr>
+        <%})}%>
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+<% layout('/api-main') -%>
+
+<a href="/api" class="control-return"><button>Return to menu</button></a>
+<h1>Recipe list</h1>
+<a href="/api/harvest/new" class="control-new"><button>Add new harvest</button></a>
+<input id="filter" type="text" placeholder="Filter table"/>
+<table border="1">
+    <thead>
+        <tr>
+            <td>Harvested Item</td>
+            <td>Harvest Tool</td>
+            <td>Harvest view</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (view.Harvests != null) { view.Harvests.forEach(function(harvest){%>
+            <tr>
+                <td><a href="/api/harvest/<%=harvest.HarvestId%>"><%=harvest.HarvestedItemName%></a></td>
+                <td><%=harvest.ToolName%></td>
+                <td>
+                    <%-include("partials/harvestView", {harvest: harvest }) %>
+                </td>
+            </tr>
+        <%})}%>
+    </tbody>
+</table>

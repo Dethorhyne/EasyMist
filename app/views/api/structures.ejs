@@ -1,0 +1,36 @@
+<% layout('/api-main') -%>
+
+<a href="/api" class="control-return"><button>Return to menu</button></a>
+<h1>Structure list</h1>
+<a href="/api/structure/new" class="control-new"><button>Add new structure</button></a>
+<input id="filter" type="text" placeholder="Filter table"/>
+<table border="1">
+    <thead>
+        <tr>
+            <td>StructureId</td>
+            <td>Name</td>
+            <td>Image</td>
+            <td>Building Category</td>
+            <td>Description</td>
+            <td>Storage size</td>
+            <td>Is Craft station</td>
+            <td>Is Electricity required?</td>
+            <td>Energy consumption</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (view.Structures != null) { view.Structures.forEach(function(structure){%>
+            <tr>
+                <td><%=structure.StructureId%></td>
+                <td><a href="/api/structure/<%=structure.StructureId%>"><%=structure.Name%></a></td>
+                <td><img class="tableStructureIcon" src="/Images/Structures/<%=structure.Name.toLowerCase().replace(/ /g, "_")%>.png" /></td>
+                <td><%=structure.BuildingCategoryName%></td>
+                <td><%=structure.Description%></td>
+                <td><%=structure.StorageAmount%></td>
+                <td><%=structure.IsCraftStation%></td>
+                <td><%=structure.IsElectricityRequired%></td>
+                <td><%=structure.EnergyConsumption%></td>
+            </tr>
+        <%})}%>
+    </tbody>
+</table>

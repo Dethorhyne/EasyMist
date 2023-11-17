@@ -1,0 +1,29 @@
+<% layout('/api-main') -%>
+
+<a href="/api/items" class="control-return"><button>Back to Item list</button></a>
+<h1>Add new item</h1>
+<form id="ItemForm">
+    <input type="text" id="Name" placeholder="Item name" />
+    <br />
+    <label>Item Category</label>
+    <select id="CategoryId">
+        <option value="0">Select category</option>
+        <% if(view.Categories != null){ view.Categories.forEach(function(Category){ %>
+            <option value="<%=Category.CategoryId%>"><%=Category.Name%></option>
+        <% }) } %>
+    </select>
+    <br />
+    <textarea id="Description" placeholder="Description" style="min-width:400px; min-height:150px;"></textarea>
+    <br />
+    <input type="number" id="StackSize" placeholder="Stack size" />
+    <br />
+    <label><input type="checkbox" id="IsCraftable" />Is item craftable?</label>
+    <br />
+    <label><input type="checkbox" id="HasDurability" />Does the item wear over time?</label>
+    <br />
+    <label><input type="checkbox" id="IsEquipable" />Can the item be equipped?</label>
+    <hr />
+    <hr />
+    <button id="addItem" class="control-save">Add item</button>
+    <label id="status"></label>
+</form>

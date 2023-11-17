@@ -1,0 +1,44 @@
+<% layout('/api-main') -%>
+
+<a href="/api/buildingrecipes" class="control-return"><button>Back to Building Recipe list</button></a>
+<h1>Add new building recipe</h1>
+<div class="hidden">
+    <select id="Ingredients">
+        <% if(view.Items != null){ view.Items.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select> 
+</div>
+<form id="BuildingRecipeForm">
+    <label>Built Structure</label>
+    <select id="BuiltStructureId">
+        <% if(view.Structures != null){ view.Structures.forEach(function(Structure){ %>
+            <option value="<%=Structure.StructureId%>"><%=Structure.Name%></option>
+        <% }) } %>
+    </select> 
+    <input type="number" id="BuildTimeInMinutes" placeholder="Building time in minutes" />
+    <br />
+    <label>Tool requirement (1)</label>
+    <select id="RequiredToolOneId">
+        <option value="0">Select tool</option>
+        <% if(view.Tools != null){ view.Tools.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select>
+    <br />
+    <label>Tool requirement (2)</label>
+    <select id="RequiredToolTwoId">
+        <option value="0">Select tool</option>
+        <% if(view.Tools != null){ view.Tools.forEach(function(Item){ %>
+            <option value="<%=Item.ItemId%>"><%=Item.Name%></option>
+        <% }) } %>
+    </select>
+    <hr />
+    <div id="ingredients">
+    </div>
+    <button id="addIngredient" class="control-add-ingredient">Add ingredient</button>
+    <hr />
+    <hr />
+    <button id="addBuildingRecipe" class="control-save">Add building recipe</button>
+    <label id="status"></label>
+</form>

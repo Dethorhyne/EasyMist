@@ -1,0 +1,56 @@
+
+<% 
+buildingRecipe.Ingredients = JSON.parse(buildingRecipe.Ingredients_JSON);
+
+buildingRecipe.builtStructureImageName = buildingRecipe.BuiltStructureName.toLowerCase().replace(/ /g, "_");
+
+if(buildingRecipe.ToolOneItemId)
+        buildingRecipe.ToolOneImage = buildingRecipe.ToolOneName.toLowerCase().replace(/ /g, "_");
+    if(buildingRecipe.ToolTwoItemId)
+        buildingRecipe.ToolTwoImage = buildingRecipe.ToolTwoName.toLowerCase().replace(/ /g, "_");
+%> 
+
+
+<div class="scaleWrap">
+    <div class="buildingRecipe">
+        <div class="iconImage" title="<%=buildingRecipe.BuiltStructureName%>" style="background-image:url('/Images/Structures/<%=buildingRecipe.builtStructureImageName%>.png');"><a title="View structure" href="/structure/<%=buildingRecipe.StructureId%>"></a></div>
+        <p class="recipeName"><a title="View structure" href="/structure/<%=buildingRecipe.StructureId%>"><%=buildingRecipe.BuiltStructureName%></a></p>
+        <p class="craftTime" title="In-game time">Build time : <span><%=buildingRecipe.BuildTimeHR%></span></p>
+        <p class="description"><%=buildingRecipe.Description%></p>
+        <div class="ingredientsContainer">
+            <% for(i = 0; i < 4; i++) { %>
+                <%if(buildingRecipe.Ingredients != null) { %>
+                    <% if(buildingRecipe.Ingredients[i]) { %>
+                        <%-include("partials/ingredientBox", 
+                        {ingredient: {
+                            Name: buildingRecipe.Ingredients[i].Name, 
+                            ItemId: buildingRecipe.Ingredients[i].ItemId, 
+                            Amount : buildingRecipe.Ingredients[i].IngredientAmount, 
+                            Image : buildingRecipe.Ingredients[i].Name.toLowerCase().replace(/ /g, "_"), 
+                            IsWater: false
+                            }
+                        });%>
+                    <% } else { %>
+                        <%-include("partials/ingredientBox", {ingredient: false});%>
+                    <% } %>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="toolsContainer">
+            <% if(buildingRecipe.ToolOneItemId) { %>
+                <div class="toolBox" title="<%=buildingRecipe.ToolOneName%>" style="background-image:url('/Images/Items/<%=buildingRecipe.ToolOneImage%>.png');">
+                    <a class="toolLink" href="/item/<%=buildingRecipe.ToolOneItemId%>"></a>
+                </div>
+            <% } else { %>
+                <div class="toolBox"></div>
+            <% } %>
+            <% if(buildingRecipe.ToolTwoItemId) { %>
+                <div class="toolBox" title="<%=buildingRecipe.ToolTwoName%>" style="background-image:url('/Images/Items/<%=buildingRecipe.ToolTwoImage%>.png');">
+                    <a class="toolLink" href="/item/<%=buildingRecipe.ToolTwoItemId%>"></a>
+                </div>
+            <% } else { %>
+                <div class="toolBox"></div>
+            <% } %>
+        </div>
+    </div>
+</div>

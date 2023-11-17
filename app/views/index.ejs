@@ -1,0 +1,11 @@
+<% layout('/main') -%>
+
+<section class="updateFeed">
+    <h2 class="sectionTitle">Latest news</h2>
+    <% if (view.Updates != null) { view.Updates.forEach(function(Update){%>
+        <article>
+            <h4><%=Update.UpdateVersion%><span class="date"><%=Update.UpdateDate.toLocaleDateString(undefined)%></span></h4>
+            <pre><%=Update.Changelist%></pre>
+        </article>
+    <% })} %>
+</section>

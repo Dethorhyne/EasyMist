@@ -1,0 +1,71 @@
+<% 
+    harvest.Gains = JSON.parse(harvest.HarvestGains_JSON);
+
+    harvest.HarvestedItemNameImage = harvest.HarvestedItemName.toLowerCase().replace(/ /g, "_");
+    if(harvest.ToolItemId)
+        harvest.ToolNameImage = harvest.ToolName.toLowerCase().replace(/ /g, "_");
+
+    harvest.MinimumHarvestTime = 0;
+    harvest.MaximumHarvestTime = 0;
+
+    var hasGains = false;
+    if(harvest.Gains && harvest.Gains.length > 0)
+    {
+        hasGains = true
+        harvest.Gains.forEach(function(gain){
+            harvest.MinimumHarvestTime += parseFloat(gain.MinimumHarvestTime);
+            harvest.MaximumHarvestTime += parseFloat(gain.MaximumHarvestTime);
+        })
+    }
+
+    if (harvest.MinimumHarvestTime == harvest.MaximumHarvestTime)
+        harvest.HarvestTimeSpan = harvest.MinimumHarvestTime;
+    else
+        harvest.HarvestTimeSpan = harvest.MinimumHarvestTime + " - " + harvest.MaximumHarvestTime;
+
+
+    var weightItems = [156, 102];
+    var liquidItems = [5, 128, 76];
+
+    if (weightItems.indexOf(harvest.ItemId)>-1)
+        harvest.ItemYieldHR = (harvest.ItemYield/1000)+"KG";
+    else if (liquidItems.indexOf(harvest.ItemId)>-1)
+        harvest.ItemYieldHR = (harvest.ItemYield/1000)+"L";
+    else
+        harvest.ItemYieldHR = harvest.ItemYield;  
+%> 
+<div class="scaleWrap">
+    <div class="harvestFrame">
+        <p class="harvestTitle">HARVEST</p>
+        <p class="harvestTime" title="In-game time">Harvest time : <span><%=harvest.HarvestTimeSpan%> min</span></p>
+        <div class="harvestedItem" title="<%=harvest.HarvestedItemName%>" style="background-image:url('/Images/Items/<%=harvest.HarvestedItemNameImage%>.png');">
+            <a class="harvestedItemLink" href="/items/<%=harvest.HarvestedItemId%>"></a>
+        </div>
+        <div class="toolsContainer">
+            <% if(harvest.ToolItemId) { %>
+                <div class="toolBox" title="<%=harvest.ToolName%>" style="background-image:url('/Images/Items/<%=harvest.ToolNameImage%>.png');">
+                    <a class="toolLink" href="/item/<%=harvest.ToolItemId%>"></a>
+                </div>
+            <% } else { %>
+                <div class="toolBox"></div>
+            <% } %>
+        </div>
+        <% if(harvest.Gains && harvest.Gains.length > 0) {%>
+            <div class="harvestContainer">
+                <% for(i = 0; i < 4; i++) { if (harvest.Gains[i]) {%>
+                        <%-include("partials/harvestGainBox", { gain: {
+                        Name: harvest.Gains[i].Name, 
+                        Image : harvest.Gains[i].Name.toLowerCase().replace(/ /g, "_"),
+                        ItemId: harvest.Gains[i].ItemId, 
+                        Range : harvest.Gains[i].LowRange==harvest.Gains[i].HighRange?harvest.Gains[i].LowRange:harvest.Gains[i].LowRange+" - "+harvest.Gains[i].HighRange,
+                        HarvestTime : harvest.Gains[i].HarvestTime
+                        }
+                    });%>
+                <% } else { %>
+                    <%-include("partials/harvestGainBox",  {gain: { Empty:true }  });%>
+                <% } %>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</div>

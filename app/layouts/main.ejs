@@ -1,0 +1,68 @@
+<% 
+  
+%>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Easy Mist - <%= view.Title %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/hud.css">
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+        <script src="/js/ajax.js"></script>
+        <script src="/js/script.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="homeLink">
+                <a class="homeLink" href="/"><img class="headerLogo" src="/Images/easy_mist_logo.png" /></a>
+            </div>
+            <ul class="navigation">
+                <li><a href="/">Home</a></li>
+                <li><a href="/items">Items</a></li>
+                <li><a href="/structures">Structures</a></li>
+                <li><a href="/updates">Game updates</a></li>
+                <li><a href="#" class="modalTrigger" data-target="mapModal">Map</a></li>
+                <li><a href="#" class="modalTrigger" data-target="reportModal">Report an issue</a></li>
+                <li><input type="text" list="dbList" placeholder="Search items and structures" id="search"></li>
+            </ul>
+            <datalist id="dbList">
+                <% if (view.Items != null) { view.Items.forEach(function(Item){%>
+                    <option data-item="<%=Item.ItemId%>" value="Item > <%=Item.Name%>">
+                <% })} %>
+                <% if (view.Structures != null) { view.Structures.forEach(function(Structure){%>
+                    <option data-structure="<%=Structure.StructureId%>" value="Structure > <%=Structure.Name%>">
+                <% })} %>
+            </datalist>
+        </header>
+        <main>
+        <%- body %>
+        </main>
+        <footer>
+            <div class="footerContent">
+                <div class="flexBox">
+                    <div class="footerBox authorBox">
+                        <a class="footerLink visitTwitter" href="https://twitter.com/DethoRhyne">@DethoRhyne</a>
+                        <a class="footerLink visitYouTube" href="https://www.youtube.com/channel/UC1cXrajHXwQ0ur90Azpum0Q">RMDetho</a>
+                    </div>
+                    <div class="footerBox donateBox">
+                        <a class="footerLink donatePaypal" href="https://paypal.me/RMDetho">Paypal</a>
+                        <a class="footerLink donateKofi" href="https://ko-fi.com/rmdetho"><img src="https://storage.ko-fi.com/cdn/cuplogo-sm.png" /> Buy me a coffee</a>
+                    </div>
+                </div>
+                <div class="footerBox disclaimerBox">
+                    Content is available under CC BY-NC-SA 3.0 unless otherwise noted.
+                    Game content and materials are trademarks and copyrights of their respective publisher and its licensors. All rights reserved.
+                    This is a fan-made site and is not affiliated with the game publisher.
+                </div>
+                <div class="copyrightBox">
+                    <p>Easy Mist © 2020 by RMDetho</p>
+                </div>
+            </div>
+        </footer>
+        <%-include("partials/modals/report") %>
+        <%-include("partials/modals/map") %>
+    </body>
+</html>

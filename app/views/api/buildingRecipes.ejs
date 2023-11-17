@@ -1,0 +1,24 @@
+<% layout('/api-main') -%>
+
+<a href="/api" class="control-return"><button>Return to menu</button></a>
+<h1>Building recipe list</h1>
+<a href="/api/buildingrecipe/new" class="control-new"><button>Add new building recipe</button></a>
+<input id="filter" type="text" placeholder="Filter table"/>
+<table border="1">
+    <thead>
+        <tr>
+            <td>Crafted Building name</td>
+            <td>Building recipe</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% if (view.BuildingRecipes != null) { view.BuildingRecipes.forEach(function(BuildingRecipe){%>
+            <tr>
+                <td><a href="/api/buildingrecipe/<%=BuildingRecipe.BuildingRecipeId%>"><%=BuildingRecipe.BuiltStructureName%></a></td>
+                <td>
+                    <%-include("partials/buildingRecipeView", {buildingRecipe: BuildingRecipe }) %>
+                </td>
+            </tr>
+        <%})}%>
+    </tbody>
+</table>
